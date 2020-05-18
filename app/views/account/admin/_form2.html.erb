@@ -1,0 +1,86 @@
+<div>
+    <%= f.label :last_name, "名前（姓）" %>
+    <%= f.text_field :last_name, :placeholder => "姓" %>
+</div>
+<div>
+    <%= f.label :first_name, "名前（名）" %>
+    <%= f.text_field :first_name, :placeholder => "名" %>
+</div>
+<div>
+    <%= f.label :last_name_phonetic, "ふりがな（姓）" %>
+    <%= f.text_field :last_name_phonetic, :placeholder => "ふりがな" %>
+</div>
+<div>
+    <%= f.label :first_name_phonetic, "ふりがな（名）" %>
+    <%= f.text_field :first_name_phonetic, :placeholder => "ふりがな" %>
+</div>
+<div>
+    <%= f.label :birth_year_month, "誕生年月" %>
+    <%= f.number_field :birth_year_month, :placeholder => "YYYYMMDD" %>
+</div>
+<div>
+    <%= f.label :joining_year, "入社日" %>
+    <%= f.number_field :joining_year, :placeholder => "YYYYMMDD" %>
+</div>
+<%= f.fields_for :account do |a| %>
+    <div>
+        <%= a.label :mail_address, "メールアドレス" %>
+        <%= a.email_field :mail_address, :placeholder => "メールアドレス" %>
+    </div>
+    <div>
+        <%= a.label :password, "パスワード" %>
+        <%= a.password_field :password, :placeholder => "パスワード" %>
+    </div>
+    <div>
+        <%= a.label :admin_flag, "管理者権限" %>
+        <%= a.check_box :admin_flag%>
+    </div>
+<% end %>
+<div>
+    <%= f.label :one_word_comment, "一言コメント" %>
+    <%= f.text_field :one_word_comment, :placeholder => "自己アピールを一言で" %>
+</div>
+<div>
+    <%= f.label :personality, "性格" %>
+    <%= f.text_field :personality, :placeholder => "自分の性格について" %>
+</div>
+<div>
+    <%= f.label :hobby, "趣味" %>
+    <%= f.text_field :hobby, :placeholder => "趣味" %>
+</div>
+<div>
+    <%= f.label :favorite_things, "好きなもの" %>
+    <%= f.text_field :favorite_things, :placeholder => "好きなものや好きなことをなんでも" %>
+</div>
+<div>
+    <%= f.label :hate_things, "嫌いなもの" %>
+    <%= f.text_field :hate_things, :placeholder => "嫌いなものや嫌いなことをなんでも" %>
+</div>
+<div>
+    <%= f.label :strong_point, "長所" %>
+    <%= f.text_field :strong_point, :placeholder => "自分の長所を" %>
+</div>
+<div>
+    <%= f.label :week_point, "短所" %>
+    <%= f.text_field :week_point, :placeholder => "自分の短所を" %>
+</div>
+<div>
+    <%= f.label :special_skill, "得意なこと" %>
+    <%= f.text_field :special_skill, :placeholder => "得意なこと" %>
+</div>
+<div>
+    <%= f.label :week_things, "苦手なこと" %>
+    <%= f.text_field :week_things, :placeholder => "苦手なこと" %>
+</div>
+<div>
+    <%= f.label :happy_done_things, "されて嬉しいこと" %>
+    <%= f.text_field :happy_done_things, :placeholder => "されて嬉しいこと" %>
+</div>
+<div>
+    <%= f.label :disgusted_things, "されたら嫌なこと" %>
+    <%= f.text_field :disgusted_things, :placeholder => "されたら嫌いなこと" %>
+</div>
+<div>
+    <%= f.label :freedom_message, "自由記入欄" %>
+    <%= f.text_field :freedom_message, :placeholder => "なんでも良いので自由に書いてください" %>
+</div>

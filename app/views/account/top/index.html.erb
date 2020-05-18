@@ -1,0 +1,13 @@
+<% @title = "indexのページ" %>
+<h1><%= @title %></h1>
+
+<ul class="menu">
+    <%= content_tag(:span, flash.alert, class: "alert") if flash.alert%>
+    <li><%= link_to "フロフィール", "/account/members/show" %></li>
+    <li><%= link_to "パスワード変更", "/account/passwords/edit" %></li>
+    <li><%= link_to "ログアウト", :account_session, method: :delete %></li>
+    <li><%= link_to "メンーバ一覧", "/account/members/index" %></li>
+    <%if @current_member.account.admin_flag == "1"%>
+        <li><%= link_to "管理者一覧", "/account/admin/show" %></li>
+    <% end %>
+</ul>

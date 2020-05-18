@@ -1,0 +1,46 @@
+@import 'colors';
+@import 'dimensions';
+
+div#wrapper{
+    div#container{
+        div#container_div{
+            width: 80%;
+            margin: 0 auto;
+            background-color: white;
+        }
+        div#login-form{
+            width: 400px;
+            margin: $wide * 2 auto;
+            padding: $wide * 2;
+            border-radius: $wide;
+            border: solid 4px $light_green;
+            background-color: $very_light_gray;
+        
+        h1{
+            background-color: transparent;
+            color: $very_light_green;
+            font-size: 3rem;
+            font-weight: bold;
+            border-bottom: solid 10px $dark_gray;
+        }
+
+            form{
+                div{
+                    padding: $wide;
+                    label{
+                        display: block;
+                        padding: $moderate 0;
+                    }
+                    input[type='text'],input[type='password']{
+                        padding: $wide;
+                        width: 400px - $wide * 4;
+                    }
+                    input[type='submit']{
+                        padding: $wide $wide * 2;
+                    }
+                }
+            }
+        
+        }
+    }
+}

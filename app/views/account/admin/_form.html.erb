@@ -1,0 +1,30 @@
+<div class="notes">
+    <span class="mark">*</span> 印の付いた項目は入力必須です。
+</div>
+<div>
+    <%= f.label :last_name, "カナ(名字)", class: "required" %>
+    <%= f.text_field :last_name, size: 10, required: true %>
+    <%= f.label :first_name, "カナ(名前)", class: "required" %>
+    <%= f.text_field :first_name, size: 10, required: true %>
+</div>
+
+<div>
+    <%= f.label :last_name_phonetic, "カナ(名字)", class: "required" %>
+    <%= f.text_field :last_name_phonetic, size: 10, required: true %>
+    <%= f.label :first_name_phonetic, "カナ(名前)", class: "required" %>
+    <%= f.text_field :first_name_phonetic, size: 10, required: true %>
+</div>
+<%= f.fields_for :account,(@m.account) do |i| %>
+    <div>
+    <%= i.label :mail_address, "メールアドレス", class: "required" %>
+    <%= i.text_field :mail_address, size:30%>
+    </div>
+    <div>
+    <%= i.label :password, "パスワード", class: "required" %>
+    <%= i.password_field :password, size:25%>
+    </div>
+    <div>
+    <%= i.label :admin_flag, "adminの権限", class: "required" %>
+    <%= i.check_box :admin_flag%>
+    </div>
+<% end %>

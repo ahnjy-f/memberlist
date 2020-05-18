@@ -1,0 +1,21 @@
+@import 'colors';
+@import 'dimensions';
+
+div#wrapper{
+    div#container{
+        div#container_div{
+            padding-top: $wide;
+            text-align: center;
+                h1{
+                    margin: 0 auto;
+                    padding: $moderate * 1.5 $moderate;
+                    font-size: 1.5rem;
+                    font-weight: normal;
+                    color: $dark_gray;
+                    border-bottom: solid 2px $dark_gray;
+                    display: inline;
+                }
+        }
+        
+    }
+}

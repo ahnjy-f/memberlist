@@ -1,0 +1,132 @@
+<div>
+    <table>
+        <tr>
+            <th>メンバーID</th>
+            <th>メールアドレス</th>
+        </tr>
+        <tr>
+            <td> <%= @account.mail_address.split('@')[0] %></th>
+            <td> <%= @account.mail_address %></th>
+        </tr>
+        <tr>
+            <th>名前(姓)</th>
+            <th>名前(名)</th>
+        </tr>
+        <tr>
+            <td><%= m.text_field :last_name, value: @member.last_name %></th>
+            <td><%= m.text_field :first_name, value: @member.first_name %></th>
+        </tr>
+        <tr>
+            <th>ふりがな(姓)</th>
+            <th>ふりがな(名)</th>
+        </tr>
+        <tr>
+            <td><%= m.text_field :last_name_phonetic, value: @member.last_name_phonetic %></th>
+            <td><%= m.text_field :first_name_phonetic, value: @member.first_name_phonetic %></th>
+        </tr>
+        <tr>
+            <th>誕生年月</th>
+            <th>入社日</th>
+        </tr>
+        <tr>
+            <th><%= (Time.parse(@member.birth_year_month.to_s)).strftime("%Y/%m") %></th>
+            <th><%= (Time.parse(@member.joining_year.to_s)).strftime("%Y/%m/%d") %></th>
+        </tr>
+        <tr>
+            <th colspan="2">一言コメント</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <%= m.text_field :one_word_comment, value: @member.one_word_comment %>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">性格</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <%= m.text_field :personality, value: @member.personality %>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">趣味</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <%= m.text_field :hobby, value: @member.hobby %>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">好きなもの</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <%= m.text_field :favorite_things, value: @member.favorite_things %>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">嫌いなもの</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <%= m.text_field :hate_things, value: @member.hate_things %>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">長所</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <%= m.text_field :strong_point, value: @member.strong_point %>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">短所</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <%= m.text_field :week_point, value: @member.week_point %>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">得意なこと</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <%= m.text_field :special_skill, value: @member.special_skill %>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">苦手なこと</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <%= m.text_field :week_things, value: @member.week_things %>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">されて嬉しいこと</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <%= m.text_field :happy_done_things, value: @member.happy_done_things %>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">されたら嫌なこと</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <%= m.text_field :disgusted_things, value: @member.disgusted_things %>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">自由記入欄</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <%= m.text_field :freedom_message, value: @member.freedom_message %>
+            </td>
+        </tr>
+    </table>
+</div>

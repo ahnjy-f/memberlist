@@ -1,0 +1,12 @@
+<% @title = "メンバー登録" %>
+<h1><%= @title %></h1>
+
+<div id="generic-form">
+    <%= form_with model: @member, url: [ :account_admin_new ] do |f| %>
+        <%= render "form2", f: f %>
+        <div class="buttons">
+            <%= f.submit "登録" %>
+            <%= link_to "キャンセル", "/account/admin/show" %>
+        </div>
+    <% end %>
+</div>
