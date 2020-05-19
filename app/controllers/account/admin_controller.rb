@@ -21,7 +21,7 @@ class Account::AdminController < Account::Base
 
     def update
         @m = Member.find(params[:id])
-        @m.assign_attributes(member_params)
+        @m.assign_attributes(update_member_params)
         pp @m.account
         pp @m
         if @m.save!
@@ -43,10 +43,11 @@ class Account::AdminController < Account::Base
     end
 
     def create
-        @member = Member.new(member_params)
+        @member = Member.new(create_member_params)
         pp @member
         
             if @member.save
+                @member.face_photo_path = "2"
                 flash.notice = "登録されました"
                 redirect_to "/account/admin/show"
             else
@@ -58,7 +59,7 @@ class Account::AdminController < Account::Base
 
 
 
-    private def member_params
+    private def create_member_params
         params.require(:member).permit(
             :last_name, :last_name_phonetic, :first_name,
             :first_name_phonetic, :face_photo_path,
@@ -76,7 +77,7 @@ class Account::AdminController < Account::Base
         )
     end
 
-    private def member_params
+    private def update_member_params
         params.require(:member).permit(
             :last_name, :last_name_phonetic, :first_name,
             :first_name_phonetic,
