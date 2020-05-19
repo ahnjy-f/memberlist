@@ -4,7 +4,7 @@ class Account::AdminController < Account::Base
     def show
         if current_admin
         
-        @m=Member.select("*")
+        @m=Member.order(:id)
         
         else
             flash.alert="あなたは入れません"
