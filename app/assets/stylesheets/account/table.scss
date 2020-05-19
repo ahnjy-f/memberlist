@@ -2,8 +2,8 @@
 @import 'dimensions';
 
 div.table-wrapper{
-    width: 90%;
-    margin: 0 auto;
+    padding-top: 20px;
+    padding-right: $narrow;
 
     div.links{
         text-align: right;
@@ -12,13 +12,16 @@ div.table-wrapper{
 
     table{
         margin: $moderate auto 0;
-        border: solid $moderate $very_light_green;
+        border: 0;
+        tr:nth-child(5){
+            border-bottom: 2px solid $dark_gray;
+        }
         tr{
             th{
-                background-color: $dark_gray;
-                color: $very_light_gray;
+                background-color: none;
+                color: $dark_gray;
             }
-            th, td{ padding: $narrow; }
+            th, td{ padding: $moderate; }
             td.email, td.date, td.password{ font-family: monospace; }
             td.actions{
                 text-align: center;
@@ -36,7 +39,7 @@ div.table-wrapper{
     table.attributes{
         width: 100%;
         th {padding-right: $moderate; width:200px; }
-        td {background-color: $very_light_gray;}
+        td {background-color: none;}
         img {width: 100px; height: 100px;}
     }
 }

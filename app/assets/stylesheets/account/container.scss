@@ -4,12 +4,13 @@
 div#wrapper{
     div#container{
         div#container_div{
-            padding-top: $wide;
+            padding-top: $very-wide*3;
             text-align: center;
+            padding-bottom: $very-wide*3;
                 h1{
                     margin: 0 auto;
                     padding: $moderate * 1.5 $moderate;
-                    font-size: 1.5rem;
+                    font-size: 2rem;
                     font-weight: normal;
                     color: $dark_gray;
                     border-bottom: solid 2px $dark_gray;
