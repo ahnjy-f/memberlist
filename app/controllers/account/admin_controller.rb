@@ -47,7 +47,6 @@ class Account::AdminController < Account::Base
         pp @member
         
             if @member.save
-                @member.face_photo_path = "2"
                 flash.notice = "登録されました"
                 redirect_to "/account/admin/show"
             else
