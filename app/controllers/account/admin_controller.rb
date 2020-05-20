@@ -16,36 +16,55 @@ class Account::AdminController < Account::Base
     end
 
     def edit 
-        @m = Member.find(params[:id])
+        
+        if current_admin
+            @m = Member.find(params[:id])
+            
+            else
+                flash.alert="あなたは入れません"
+                redirect_to :account_root 
+            end
     end
 
     def update
-        @m = Member.find(params[:id])
-        @m.assign_attributes(update_member_params)
-        pp @m.account
-        pp @m
-        if @m.save!
-            pp "saveしました"
-            @m=Member.select("*")
-            @m = @m.page(params[:page])
-            flash.notice ="更新成功"
-            redirect_to:account_admin_show
-        else
-            pp "save"
-            flash.alert="変更できませんでした"
-            redirect_to:account_admin_show
+        if current_admin
+            @m = Member.find(params[:id])
+            @m.assign_attributes(update_member_params)
+
+            if @m.save!
+                @m=Member.select("*")
+                @m = @m.page(params[:page])
+                flash.notice ="更新成功"
+                redirect_to:account_admin_show
+            else 
+                pp "save"
+                flash.alert="変更できませんでした"
+                redirect_to:account_admin_show
+            end
+            
+            else
+                flash.alert="あなたは入れません"
+                redirect_to :account_root 
         end
     end
 
     def new
-        @member = Member.new
-        @member.build_account
+        if current_admin
+        
+            @member = Member.new
+            @member.build_account
+
+            else
+                flash.alert="あなたは入れません"
+                redirect_to :account_root 
+            end
     end
 
     def create
-        @member = Member.new(create_member_params)
-        pp @member
-        
+        if current_admin
+            @member = Member.new(create_member_params)
+            pp @member
+
             if @member.save
                 flash.notice = "登録されました"
                 redirect_to "/account/admin/show"
@@ -53,7 +72,12 @@ class Account::AdminController < Account::Base
                 pp @member.errors
                 flash.now.alert = "登録されませんでした"
                 render action: "new"
-            end
+            end  
+
+            else
+                flash.alert="あなたは入れません"
+                redirect_to :account_root 
+            end 
     end
 
 

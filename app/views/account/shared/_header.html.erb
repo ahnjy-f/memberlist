@@ -13,15 +13,17 @@
         @title = "#{full_name}"
         photo = @current_member.face_photo_path
         @photo = "#{photo}"
-    elsif @account 
-        full_name =  @account.mail_address
+    elsif @current_admin
+        full_name = @current_member.last_name + @current_member.first_name
         @title = "#{full_name}"
+        photo = @current_member.face_photo_path
+        @photo = "#{photo}"
     else
         @title = "職員"
         @photo = "0"
     end%>
 
-    <% if @account || @current_member %>
+    <% if current_account %>
     <div class="menu">
         <%= content_tag(:span, flash.alert, class: "alert") if flash.alert%>
             <li>
@@ -53,10 +55,10 @@
     <% end %>
 </header>
 
-<% if @account || @current_member %>
+<% if current_account %>
 <header class="header2">
     <div class="right">
-    <%if @current_member.account.admin_flag == "1"%>
+    <%if current_account.admin_flag=="1" %>
         <li>
             <a href="/account/admin/show">管理者一覧</a>
         </li>

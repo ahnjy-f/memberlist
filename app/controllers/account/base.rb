@@ -8,12 +8,14 @@ class Account::Base < ApplicationController
         end
     end
 
-    private def current_admin 
+    def current_admin 
         if session[:account_admin_flag] == "1"
             pp "you are admin"
-            true
-        else
-            false
+            @current_admin ||=   
+                Account.find_by(id: session[:account_id])
+            @current_member ||=
+                Member.find_by(id: session[:account_id])
+            pp @current_admin
         end
     end
 
