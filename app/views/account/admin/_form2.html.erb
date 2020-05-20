@@ -1,35 +1,39 @@
 <div>
+    <%= f.label :face_photo_path, "写真番号設定" %>
+    <%= f.number_field :face_photo_path, :placeholder => "0, 1, 2", required: true %>
+</div>
+<div>
     <%= f.label :last_name, "名前（姓）" %>
-    <%= f.text_field :last_name, :placeholder => "姓" %>
+    <%= f.text_field :last_name, :placeholder => "姓", required: true %>
 </div>
 <div>
     <%= f.label :first_name, "名前（名）" %>
-    <%= f.text_field :first_name, :placeholder => "名" %>
+    <%= f.text_field :first_name, :placeholder => "名", required: true %>
 </div>
 <div>
     <%= f.label :last_name_phonetic, "ふりがな（姓）" %>
-    <%= f.text_field :last_name_phonetic, :placeholder => "ふりがな" %>
+    <%= f.text_field :last_name_phonetic, :placeholder => "ふりがな", required: true %>
 </div>
 <div>
     <%= f.label :first_name_phonetic, "ふりがな（名）" %>
-    <%= f.text_field :first_name_phonetic, :placeholder => "ふりがな" %>
+    <%= f.text_field :first_name_phonetic, :placeholder => "ふりがな", required: true %>
 </div>
 <div>
     <%= f.label :birth_year_month, "誕生年月" %>
-    <%= f.number_field :birth_year_month, :placeholder => "YYYYMMDD" %>
+    <%= f.number_field :birth_year_month, :placeholder => "YYYYMMDD", required: true %>
 </div>
 <div>
     <%= f.label :joining_year, "入社日" %>
-    <%= f.number_field :joining_year, :placeholder => "YYYYMMDD" %>
+    <%= f.number_field :joining_year, :placeholder => "YYYYMMDD", required: true %>
 </div>
 <%= f.fields_for :account do |a| %>
     <div>
         <%= a.label :mail_address, "メールアドレス" %>
-        <%= a.email_field :mail_address, :placeholder => "メールアドレス" %>
+        <%= a.email_field :mail_address, :placeholder => "メールアドレス", required: true %>
     </div>
     <div>
         <%= a.label :password, "パスワード" %>
-        <%= a.password_field :password, :placeholder => "パスワード" %>
+        <%= a.password_field :password, :placeholder => "パスワード", required: true %>
     </div>
     <div>
         <%= a.label :admin_flag, "管理者権限" %>

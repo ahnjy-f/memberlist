@@ -16,8 +16,8 @@ class Account::SessionsController < Account::Base
         pp "hello"
         a=Member.find(1); 
         pp "=========="
-        pp a.posts.find(1).likes#PostID値
-        pp a.posts.find(1).replies#PostID値
+        b=a.posts.find(1).replies.find_by(id:1).likes.to_ary#PostID値
+        pp b.like;
         
         pp "=========="
         if @form.mail_address.present?
