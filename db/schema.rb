@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_011021) do
+ActiveRecord::Schema.define(version: 2020_05_19_020557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 2020_04_22_011021) do
     t.datetime "updated_at", null: false
     t.index ["created_at"], name: "index_accounts_on_created_at"
     t.index ["member_id", "created_at"], name: "index_accounts_on_member_id_and_created_at"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.bigint "post_id"
+    t.bigint "reply_id"
+    t.integer "like"
+    t.datetime "created_at", null: false
+    t.index ["created_at"], name: "index_likes_on_created_at"
+    t.index ["member_id", "created_at"], name: "index_likes_on_member_id_and_created_at"
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["reply_id"], name: "index_likes_on_reply_id"
   end
 
   create_table "member_edit_histories", force: :cascade do |t|
@@ -74,6 +86,30 @@ ActiveRecord::Schema.define(version: 2020_04_22_011021) do
     t.index ["last_name_phonetic", "first_name_phonetic"], name: "index_members_on_last_name_phonetic_and_first_name_phonetic"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.string "post", null: false
+    t.datetime "created_at", null: false
+    t.index ["created_at"], name: "index_posts_on_created_at"
+    t.index ["member_id", "created_at"], name: "index_posts_on_member_id_and_created_at"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.bigint "post_id", null: false
+    t.string "reply", null: false
+    t.datetime "created_at", null: false
+    t.index ["created_at"], name: "index_replies_on_created_at"
+    t.index ["member_id", "created_at"], name: "index_replies_on_member_id_and_created_at"
+    t.index ["post_id"], name: "index_replies_on_post_id"
+  end
+
   add_foreign_key "accounts", "members"
+  add_foreign_key "likes", "members"
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "replies"
   add_foreign_key "member_edit_histories", "members"
+  add_foreign_key "posts", "members"
+  add_foreign_key "replies", "members"
+  add_foreign_key "replies", "posts"
 end
