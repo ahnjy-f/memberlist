@@ -13,7 +13,12 @@ class Account::SessionsController < Account::Base
 
     def create
         @form = Account::LoginForm.new(params[:account_login_form])
+        pp "hello"
+        a=Member.find(1); 
+        pp "=========="
+        pp a.posts.find(1).replies.find_by(id:1).reply#PostID値
 
+        pp "=========="
         if @form.mail_address.present?
             account_info =
                 Account.find_by("LOWER(mail_address) = ? ", @form.mail_address.downcase)    
