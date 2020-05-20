@@ -7,14 +7,22 @@ header{
         padding: $narrow $moderate;
         margin: 0 $wide;
         font-size: $tiny;
+        width: auto;
+        height: 30px;
+        text-align: center;
+        line-height: 25px;
+        border-radius: $very-wide;
         color: $very_light_gray;
+        position: absolute;
+        top: 25%;
+        left: 12%;
     }
 
     span.notice{
-        background-color: $green;
+        background-color: $orange;
     }
 
     span.alert{
-        background-color: $red;
+        background-color: $orange;
     }
 }
