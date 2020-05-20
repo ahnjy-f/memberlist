@@ -4,7 +4,7 @@ class Account::PasswordsController < Account::Base
         pp "一応入りました"
         pp current_account
         @change_password_form = Account::ChangePasswordForm.new(object: current_account)
-        pp "editに入りました"   
+        pp "editに入りました"
         pp "情報"
         pp @change_password_form
         pp "=========================="
@@ -25,7 +25,7 @@ class Account::PasswordsController < Account::Base
             render action: "edit"
         end
     end
-
+ㅁ
     def account_password_params
         params.require(:account_change_password_form).permit(
             :current_password, :new_password, :new_password_confirmation
