@@ -29,6 +29,7 @@ class Account::SessionsController < Account::Base
             pp session[:account_admin_flag]
             pp "============="
             flash.notice = "ログイン完了"
+            pp current_admin
             redirect_to :account_root
         else
             flash.alert = "メールアドレスか　パスワードが　正しくないです"
