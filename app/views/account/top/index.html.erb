@@ -1,2 +1,32 @@
 <% @title = "Post ページ" %>
 <h1><%= @title %></h1>
+<%= form_with model: Post.new, url:"/account/post/"+@m.id.to_s do |a| %>
+    <%=@m.id%>
+    <div>
+    <%= a.text_area :post , :placeholder => "今日はどんな気分ですか？",:size => "100" , required: true %>
+    <%= a.submit "投稿する"%>
+    </div>
+<%end%>   
+    <%@p.each do |post|%>
+            <p>
+            <p>
+            <div>
+            <%=post.post%>
+            </div>
+            <p>
+            <p>
+
+            <%post.likes.each do |plike|%>
+            <%= plike.like%>
+            <%end%>
+            
+        <%= form_with model: Reply.new, url:"/account/reply/"+post.id.to_s do |a| %>
+            <%= a.text_field :reply, :placeholder => "コメントを残しましょう！",:size => "50" , required: true %>
+            <%= a.submit "投稿する"%>        
+        <%end%>
+        <%post.replies.each do |reply|%>
+            <div style="">
+            <%=reply.reply%>
+            </div>
+            <%end%>
+        <%end%>

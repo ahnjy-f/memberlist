@@ -1,9 +1,9 @@
 require "pp"
 class Account::SessionsController < Account::Base
     def new
+
         if current_account
             pp "indexに行きます"
-            
             redirect_to :account_root
         else
             @form = Account::LoginForm.new
@@ -50,7 +50,15 @@ class Account::SessionsController < Account::Base
         redirect_to :account_root
     end
 
-    def edit
+    def show
+        
+        @members=Member.order(created_at: :desc);
+        @p=Post.order(created_at: :desc);
+        @m=current_account;
+        @current_account=current_account;
+        @current_admin=current_admin;
+        
+        render action: "../top/index";
     end
 
 end
