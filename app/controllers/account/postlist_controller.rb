@@ -1,13 +1,11 @@
-<<<<<<< Updated upstream
+require "pp"
 class Account::PostlistController < Account::Base
     def index
         @current_account = current_account
         @current_member = current_member
         @post = Member.all
         # render json: @post
-=======
-require "pp"
-class Account::PostlistController < ApplicationController
+    end
     def post
         a=Member.find(params[:id]);
         p=Post.new
@@ -39,6 +37,5 @@ class Account::PostlistController < ApplicationController
         params.require(:reply).permit(
             :reply
         )
->>>>>>> Stashed changes
     end
 end
