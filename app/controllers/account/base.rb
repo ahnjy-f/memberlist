@@ -1,5 +1,6 @@
 class Account::Base < ApplicationController
-    
+    before_action :check_account
+
     private def current_account
         pp "ログインできたのか確認中"
         if session[:account_id]
@@ -26,5 +27,13 @@ class Account::Base < ApplicationController
         end
     end
     
+    private def check_account
+        if current_member && !current_member.active?
+            session.delete(:account_id)
+            flash.alert = "退職者は入れません"
+            redirect_to :account_root
+        end
+    end
+
     helper_method :current_account
 end 

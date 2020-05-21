@@ -3,16 +3,24 @@
 </div>
 <div>
     <%= f.label :last_name, "カナ(名字)", class: "required" %>
-    <%= f.text_field :last_name, size: 10, required: true %>
+    <%= f.text_field :last_name, size: 32, required: true %>
+</div>   
+<div>
     <%= f.label :first_name, "カナ(名前)", class: "required" %>
-    <%= f.text_field :first_name, size: 10, required: true %>
+    <%= f.text_field :first_name, size: 32, required: true %>
 </div>
 
 <div>
     <%= f.label :last_name_phonetic, "カナ(名字)", class: "required" %>
-    <%= f.text_field :last_name_phonetic, size: 10, required: true %>
+    <%= f.text_field :last_name_phonetic, size: 32, required: true %>
+</div>
+<div>
     <%= f.label :first_name_phonetic, "カナ(名前)", class: "required" %>
-    <%= f.text_field :first_name_phonetic, size: 10, required: true %>
+    <%= f.text_field :first_name_phonetic, size: 32, required: true %>
+</div>
+<div>
+    <%= f.label :deleted_at, "退職日" %>
+    <%= f.date_field :deleted_at, size: 32 %>
 </div>
 <%= f.fields_for :account,(@m.account) do |i| %>
     <div>
@@ -21,7 +29,7 @@
     </div>
     <div>
     <%= i.label :password, "パスワード", class: "required" %>
-    <%= i.password_field :password, size:25%>
+    <%= i.password_field :password, class: "none", size:25%>
     </div>
     <div>
     <%= i.label :admin_flag, "adminの権限", class: "required" %>

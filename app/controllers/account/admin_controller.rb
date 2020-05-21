@@ -41,7 +41,7 @@ class Account::AdminController < Account::Base
                 flash.alert="変更できませんでした"
                 redirect_to:account_admin_show
             end
-            
+
             else
                 flash.alert="あなたは入れません"
                 redirect_to :account_root 
@@ -106,7 +106,7 @@ class Account::AdminController < Account::Base
     private def update_member_params
         params.require(:member).permit(
             :last_name, :last_name_phonetic, :first_name,
-            :first_name_phonetic,
+            :first_name_phonetic, :deleted_at,
             account_attributes:[
                 :mail_address,
                 :password,

@@ -14,4 +14,8 @@ class Member < ApplicationRecord
     accepts_nested_attributes_for :replies
     accepts_nested_attributes_for :likes
 
+    def active?
+        deleted_at.nil? || deleted_at > Date.today
+    end
+
 end
