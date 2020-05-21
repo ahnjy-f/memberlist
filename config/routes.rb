@@ -25,6 +25,11 @@ Rails.application.routes.draw do
     post "admin/new" => "admin#create"
     get "admin/:id/edit" => "admin#edit"
     patch "admin/:id" =>"admin#update"
+
+    resources :post, only: [ :create, :destroy]
+    resource :postlist, only: [ :create, :destroy]
+    resource :likelist, only: [ :create, :destroy]
+    
   end
 
 
