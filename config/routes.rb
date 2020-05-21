@@ -27,8 +27,8 @@ Rails.application.routes.draw do
     patch "admin/:id" =>"admin#update"
 
     resources :post, only: [ :index, :create, :destroy]
-    resource :postlist, only: [ :index, :create, :destroy]
-    resource :likelist, only: [ :index, :create, :destroy]
+    resources :postlist, only: [ :index, :create, :destroy]
+    resources :likelist, only: [ :index, :create, :destroy]
     
   end
 
