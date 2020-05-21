@@ -1,6 +1,8 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -15,6 +17,7 @@ module PrjRuby
     config.i18n.load_path +=
       Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}").to_s]
     config.i18n.default_locale = :ja
+    config.autoload_paths += Dir[Rails.root.join( 'app', 'uploaders')]
 
     config.generators do |g|
       g.skip_routes true

@@ -1,11 +1,15 @@
-<% @title = "フロフィールのページ" %>
+<% @title = "プロフィール" %>
 <h1><%= @title %></h1>
 
 <div class="table-wrapper">
 
     <table class="attributes">
         <tr>
-            <td colspan="2"><img src="/assets/<%= @member.face_photo_path %>.jpg" class="icon rounded-circle"></td>
+            <td colspan="2">
+
+                    <%= image_tag @member.face_photo_path.url, class:"icon rounded-circle" %>
+  
+            </td>
         </tr>
         <tr>
             <td colspan="2">ふりがな(性) ふりがな(名)</td>

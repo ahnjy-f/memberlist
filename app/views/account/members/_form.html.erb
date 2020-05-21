@@ -1,6 +1,12 @@
 <div>
     <table>
         <tr>
+            <td class="user-profile" colspan="2">
+            <%# <%= m.label :face_photo_path %>
+            <%= m.file_field :face_photo_path, accept: 'image/png,image/gif,image/jpeg' %>
+            <%# <%= m.file_field :face_photo_path %>
+        </tr>
+        <tr>
             <th>メンバーID</th>
             <th>メールアドレス</th>
         </tr>
