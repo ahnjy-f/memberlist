@@ -41,6 +41,9 @@ class Account::MembersController < Account::Base
         @member.assign_attributes(member_params)
 
         if @member.save
+            if @member.face_photo_path.nil?
+                @member.face_photo_path = "default_icon.jpg"
+            end
 
             @edithistory = MemberEditHistory.new(history_params)
             @edithistory.member_id = @member.id
