@@ -6,7 +6,11 @@
     <table class="attributes">
         <tr>
             <td colspan="2">
-                <img src="<%= @member.face_photo_path %>", class="icon rounded-circle">
+                <% if @member.face_photo_path.nil? %>
+                    <img src="/assets/images/0.jpg", class="icon rounded-circle">
+                <% else %>
+                    <img src="<%= @member.face_photo_path %>", class="icon rounded-circle">
+                <% end %>
             </td>
         </tr>
         <tr>

@@ -66,6 +66,9 @@ class Account::AdminController < Account::Base
             pp @member
 
             if @member.save
+                if @member.face_photo_path.nil?
+                    @member.face_photo_path = "default_icon.jpg"
+                end
                 flash.notice = "登録されました"
                 redirect_to "/account/admin/show"
             else
