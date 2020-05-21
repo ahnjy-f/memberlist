@@ -26,9 +26,9 @@ Rails.application.routes.draw do
     get "admin/:id/edit" => "admin#edit"
     patch "admin/:id" =>"admin#update"
 
-    resources :post, only: [ :create, :destroy]
-    resource :postlist, only: [ :create, :destroy]
-    resource :likelist, only: [ :create, :destroy]
+    resources :post, only: [ :index, :create, :destroy]
+    resource :postlist, only: [ :index, :create, :destroy]
+    resource :likelist, only: [ :index, :create, :destroy]
     
   end
 
