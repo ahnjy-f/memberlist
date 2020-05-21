@@ -50,7 +50,8 @@
 
          <div class="right">
             <%= link_to "ログイン", :account_login %>
-            <img src="/assets/<%= @photo %>.jpg" class="icon rounded-circle">
+            <%= image_tag @current_member.face_photo_path, class:"icon rounded-circle" %>
+            
         </div>
     <% end %>
 </header>
