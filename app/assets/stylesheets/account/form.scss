@@ -18,7 +18,7 @@ div#wrapper{
                     padding: $wide;
                     label{
                         text-align: left;
-                        display: block;
+                        display: inline-block;
                         padding: $moderate 0;
                     }
                     label.required:after{
@@ -29,6 +29,10 @@ div#wrapper{
                     input[type='password']{
                         border-radius: $very-wide;
                         border: 1px solid $dark-gray;
+                    }
+                    input[type='password'].none{
+                        border-radius: 0;
+                        border: 1px solid $gray;
                     }
                 }
                 div.notes{

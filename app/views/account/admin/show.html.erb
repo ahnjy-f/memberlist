@@ -1,54 +1,38 @@
-<h1>hellow world</h1>   
-    <p>
-    <%= link_to "新規登録", :new_account_admin%>
-   <%= paginate @m %>
-    <table>
+<% @title = "管理者一覧" %>
+<h1><%= @title %></h1>   
+
+<div class="table-wrapper">
+    <div class="links">
+        <%= link_to "新規登録", :new_account_admin%>
+    </div>
+
+    <table class = "listing">
         <tr>
+            <th></th>
             <th>ID</th>
-            <th>名前</th>
+            <th>氏名</th>
             <th>フリガナ</th>
-            <th>生年月</th>
-            <th>入社年月日</th>
+            <th>生年月日</th>
+            <th>入社日</th>
+            <th>退職日</th>
             <th>作成日</th>
             <th>更新日</th>
-            
-
         </tr>
-
         <% @m.each do |m| %>
-        <tr>
-            <td><%= link_to "更新" , m.id.to_s+"/edit"%></td>
-    
-            <td>
-                <%= m.id %>
+        <tr class="none">
+            <td class="actions">
+                <%= link_to "更新" , m.id.to_s+"/edit"%>
             </td>
-            <td>
-                <%= m.last_name %>
-            </td>
-            <td>
-                <%= m.first_name_phonetic %>
-            </td>
-
-            <td>
-                <%= m.birth_year_month%>
-            </td>
-            
-            <td>
-                <%= m.joining_year %>
-            </td>
-
-
-            <td>
-                <%= m.created_at %>
-            </td>
-            
-
-            <td>
-                <%= m.updated_at %>
-            </td>
-            
-            </tr>
+            <td><%= m.id %></td>
+            <td><%= m.last_name %></td>
+            <td><%= m.first_name_phonetic %></td>
+            <td ><%= m.birth_year_month%></td>
+            <td><%= m.joining_year %></td>
+            <td><%= m.deleted_at.try(:strftime, "%Y%m%d") %></td>
+            <td><%= m.created_at %></td>
+            <td><%= m.updated_at %></td>
+        </tr>
         <% end %>
     </table>
     <%= paginate @m %>
-    
+</div>
