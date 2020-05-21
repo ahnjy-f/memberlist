@@ -6,6 +6,8 @@ class Account::MembersController < Account::Base
         
         @member = Member.order(:first_name, :last_name)
         @member = @member.page(params[:page])
+        
+        
     end
     
     def detail
@@ -34,6 +36,7 @@ class Account::MembersController < Account::Base
         @current_member = current_member
         @account = Account.find_by(id: session[:account_id])
         @member = current_member
+        # @member.face_photo_path = params[:face_photo_path]
 
         @member.assign_attributes(member_params)
 

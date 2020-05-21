@@ -5,7 +5,13 @@
     <div class="row">
         <% @member.each do |m| %>
             <div class="col-3">
-                <div><%= link_to(image_tag(m.face_photo_path+".jpg", class:"icon rounded-circle", width:"100px",height:"100px"), m.id.to_s+"/detail") %></div>
+                <div>
+                    <% if m.face_photo_path.url.nil? %>
+                        <%= link_to(image_tag("/assets/images/0.jpg", class:"icon rounded-circle", width:"100px",height:"100px"), m.id.to_s+"/detail") %>
+                    <% else %>
+                        <%= link_to(image_tag(m.face_photo_path.url, class:"icon rounded-circle", width:"100px",height:"100px"), m.id.to_s+"/detail") %>
+                    <% end %>  
+                </div>
                 <%= m.last_name %> <%= m.first_name %>
                 <p><%= m.one_word_comment %></p>
             </div>
