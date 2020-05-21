@@ -11,16 +11,9 @@
     if @current_member 
         full_name = @current_member.last_name + @current_member.first_name
         @title = "#{full_name}"
-        photo = @current_member.face_photo_path
-        @photo = "#{photo}"
     elsif @current_admin
         full_name = @current_member.last_name + @current_member.first_name
         @title = "#{full_name}"
-        photo = @current_member.face_photo_path
-        @photo = "#{photo}"
-    else
-        @title = "職員"
-        @photo = "0"
     end%>
 
     <% if current_account %>
@@ -41,8 +34,7 @@
     </div>
 
         <div class="right">
-            <img src="<%= photo %>", class="icon rounded-circle">
-           
+            <%= image_tag @current_member.face_photo_path.url, class:"icon rounded-circle" %>
             <%= @title %>
         </div>
         
@@ -50,7 +42,6 @@
 
          <div class="right">
             <%= link_to "ログイン", :account_login %>
-            <%= image_tag @current_member.face_photo_path, class:"icon rounded-circle" %>
             
         </div>
     <% end %>
