@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   namespace :account do
     root "top#index"
     get "login" => "sessions#new", as: :login
-    resource :session, only: [ :create, :destroy] 
+    get "show" => "sessions#show", as: :show
+    post "post/:id" => "postlist#post"
+    post "reply/:id" => "postlist#reply"
+    resource :session, only: [ :create, :destroy]
     
     # get "members/show" #フロフィール画面
     get "passwords/edit" => "passwords#edit" 
@@ -16,7 +19,6 @@ Rails.application.routes.draw do
     get "members/:id/edit" => "members#edit"
     post "members/:id/edit" => "members#edit"
     patch "members/:id" => "members#update"
-
     get "admin/show" => "admin#show"
 
     resources :admin, except: [ :destroy ]
@@ -36,3 +38,4 @@ Rails.application.routes.draw do
   end
 
 end
+

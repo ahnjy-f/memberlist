@@ -5,7 +5,7 @@ class Account::TopController < Account::Base
             pp "ログイン成功"
             @current_account = current_account
             @current_member = current_member
-            render action: "index"
+            redirect_to :account_show
         else
 
             pp "hello"
