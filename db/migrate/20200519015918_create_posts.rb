@@ -3,6 +3,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
     create_table :posts do |t|
       t.references :member,foreign_key: true, null: false, index: false # 社員テーブル
       t.string :post, null: false
+      t.integer :like,default: 0
       t.datetime :created_at, null: false
     end
     add_index :posts, :created_at

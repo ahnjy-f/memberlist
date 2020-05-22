@@ -7,10 +7,6 @@ class Account::TopController < Account::Base
             @current_member = current_member
             redirect_to :account_show
         else
-
-            pp "hello"
-            pp Account.find_by(id:1);
-            pp "login ページに戻ります"
             redirect_to :account_login
         end
     end
