@@ -24,9 +24,9 @@
                 <td><%= x.first_name_phonetic %></td>
                 <td ><%= x.birth_year_month%></td>
                 <td><%= x.joining_year %></td>
-                <td><%= x.deleted_at.try(:strftime, "%Y%m%d") %></td>
-                <td><%= x.created_at.try(:strftime, "%Y%m%d") %></td>
-                <td><%= x.updated_at.try(:strftime, "%Y%m%d") %></td>
+                <td><%= x.deleted_at.try(:strftime, "%Y/%m/%d") %></td>
+                <td><%= x.created_at.try(:strftime, "%Y/%m/%d") %></td>
+                <td><%= x.updated_at.try(:strftime, "%Y/%m/%d") %></td>
             </tr>
         <% end %>
     </table>
