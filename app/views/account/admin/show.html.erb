@@ -5,9 +5,10 @@
     <div class="links">
         <%= link_to "新規登録", :new_account_admin%>
     </div>
-    <div id="generic-form">
+    
+    <div id="search-form">
     <%= form_with model: @member, url: [ :account_admin_result ] do |f| %>
-        <%= render "search_form", f: f %> <%= f.submit "検索" %>
+        <%= render "search_form", f: f %>
     <% end %>
     </div>
     <%# <%= render '', post: @m.klass %>

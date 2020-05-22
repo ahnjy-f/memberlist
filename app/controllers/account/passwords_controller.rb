@@ -25,7 +25,7 @@ class Account::PasswordsController < Account::Base
             render action: "edit"
         end
     end
-ㅁ
+
     def account_password_params
         params.require(:account_change_password_form).permit(
             :current_password, :new_password, :new_password_confirmation
