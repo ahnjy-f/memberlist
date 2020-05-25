@@ -5,6 +5,13 @@
     <div class="links">
         <%= link_to "新規登録", :new_account_admin%>
     </div>
+    
+    <div id="search-form">
+    <%= form_with model: @member, url: [ :account_admin_result ] do |f| %>
+        <%= render "search_form", f: f %>
+    <% end %>
+    </div>
+    <%# <%= render '', post: @m.klass %>
 
     <table class = "listing">
         <tr>
@@ -28,9 +35,9 @@
             <td><%= m.first_name_phonetic %></td>
             <td ><%= m.birth_year_month%></td>
             <td><%= m.joining_year %></td>
-            <td><%= m.deleted_at.try(:strftime, "%Y%m%d") %></td>
-            <td><%= m.created_at %></td>
-            <td><%= m.updated_at %></td>
+            <td><%= m.deleted_at.try(:strftime, "%Y/%m/%d") %></td>
+            <td><%= m.created_at.try(:strftime, "%Y/%m/%d") %></td>
+            <td><%= m.updated_at.try(:strftime, "%Y/%m/%d") %></td>
         </tr>
         <% end %>
     </table>
