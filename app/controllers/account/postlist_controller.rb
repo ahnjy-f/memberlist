@@ -1,12 +1,14 @@
 require "pp"
 class Account::PostlistController < Account::Base
     def index
+
         @current_account = current_account
         @current_member = current_member
         @member = Member.all
         @post = Post.all
         @post_all=Post.order(created_at: :desc)
         @reply = Reply.order(created_at: :ASC)
+
     end
     def post
         p=Member.find(params[:id]);
