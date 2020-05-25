@@ -29,6 +29,10 @@ Rails.application.routes.draw do
     get "admin/:id/edit" => "admin#edit"
     patch "admin/:id" =>"admin#update"
 
+    get "admin/result" => "admin#result"
+    post "admin/result" => "admin#result"
+    patch "admin/result" => "admin#result"
+
     resources :post, only: [ :index, :create, :destroy]
     resources :postlist, only: [ :index, :create, :destroy]
     resources :likelist, only: [ :index, :create, :destroy]
@@ -39,4 +43,6 @@ Rails.application.routes.draw do
     get "post/reply/:id" => "post#reply_like"
     
   end
+
 end
+

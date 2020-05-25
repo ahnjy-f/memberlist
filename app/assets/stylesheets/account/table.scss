@@ -9,6 +9,10 @@ div.table-wrapper{
         text-align: right;
         padding: $moderate;
     }
+    div#search-form{
+        justify-content: left;
+        display:flex;
+    }
 
     table{
         margin: $moderate auto 0;

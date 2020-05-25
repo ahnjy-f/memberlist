@@ -63,7 +63,6 @@ class Account::AdminController < Account::Base
     def create
         if current_admin
             @member = Member.new(create_member_params)
-            pp @member
 
             if @member.save
                 if @member.face_photo_path.nil?
@@ -83,6 +82,12 @@ class Account::AdminController < Account::Base
             end 
     end
 
+    def result
+        pp "検索を始めます。"
+        @searches = Member.where('created_at >= :years_ago', :years_ago => Time.now-60.years).where("last_name ilike '%#{params[:search_text]}%'")
+        # @searches = eval(params[:model]).where('created_at >= :years_ago', :years_ago => Time.now-60.years).where("last_name LIKE ? '%#{params[:search_text]}%'")
+        pp @searches
+    end
 
 
     private def create_member_params
