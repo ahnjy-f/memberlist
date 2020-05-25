@@ -1,2 +1,2 @@
 <%= react_component("Menu", { current_member: @current_member }, prerender: true) %>
-<%= react_component("PostList", { current_member: @current_member }, prerender: true) %>
+<%= react_component("PostList", { current_member: @current_member,member: @member,  post: @post, reply: @reply }, prerender: true) %>

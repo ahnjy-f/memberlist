@@ -4,8 +4,6 @@ Rails.application.routes.draw do
     root "top#index"
     get "login" => "sessions#new", as: :login
     get "show" => "sessions#show", as: :show
-    post "post/:id" => "postlist#post"
-    post "reply/:id" => "postlist#reply"
     post "post_like/:id" => "postlist#post_like"
     post "reply_like/:id" => "postlist#reply_like"
     
@@ -34,6 +32,11 @@ Rails.application.routes.draw do
     resources :post, only: [ :index, :create, :destroy]
     resources :postlist, only: [ :index, :create, :destroy]
     resources :likelist, only: [ :index, :create, :destroy]
+    post "post/:id" => "postlist#post"
+    get "post/create/:id" => "post#create"
+    post "reply/:id" => "postlist#reply"
+    get "post/:id" => "post#post_like"
+    get "post/reply/:id" => "post#reply_like"
     
   end
 end
