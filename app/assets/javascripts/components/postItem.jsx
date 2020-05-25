@@ -1,8 +1,8 @@
 var PostItem = React.createClass({
   
     render(){
-        console.log("this.props.data - - - - - - - - - - -- - ")
-        console.log(this.props.data)
+        console.log("this.props.data postItem - - - - - - - - - - -- - ")
+        console.log(this.props)
         let data = this.props.data
         let post = this.props.post
         let reply = this.props.reply
@@ -16,9 +16,9 @@ var PostItem = React.createClass({
             id = data.post_id
             idname = "post_id :" + data.post_id
 
-            for(let i=1; i < post.length; i++){
+            for(let i=0; i < post.length; i++){
                 console.log("for post")
-                if(post[i].id==id){   
+                if(post[i].id==id){
                     console.log("if post")
                     console.log(post[i].id +"★hit! post.id[" + post[i].id +"] == ["+ id +"]:id   length:" + post.length)
                     
@@ -40,9 +40,9 @@ var PostItem = React.createClass({
             id =  data.reply_id
             idname = "reply_id :" + data.reply_id
 
-            for(let i=1; i < reply.length; i++){
+            for(let i=0; i < reply.length; i++){
                 console.log("for reply")
-                if(reply[i].id==id){   
+                if(reply[i].id==id){
                     console.log("if reply")
                     console.log(reply[i].id +"★hit! reply[" + reply[i].id +"] == ["+ id +"]:id   length:"+ reply.length)
                     
@@ -64,9 +64,10 @@ var PostItem = React.createClass({
       return (
         <div>
             <hr/>
+            
             {idname}
             
-            <GetMemberDate member={this.props.member} memberid={hit[0].data.member_id}/>
+             <GetMemberDate member={this.props.member} memberid={hit[0].data.member_id}/> 
             
             {hit[0].content}
 

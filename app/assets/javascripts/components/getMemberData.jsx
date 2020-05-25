@@ -15,6 +15,7 @@ var GetMemberDate = React.createClass({
 
         let data
         let hit =[]
+
         for(let i=0; i < member.length; i++){
             console.log(i + ":i "+ ID +": ID + length:"+ member.length )
             if(member[i].id==ID){ 

@@ -23,6 +23,7 @@ var MessageBox = React.createClass({
               id="name"
               type="text"
               value={this.state.name}
+              name="post"
               onChange={e => this.updateName(e.target.value)}
             />
   

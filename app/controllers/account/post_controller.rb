@@ -4,8 +4,7 @@ class Account::PostController < Account::Base
         @current_account = current_account
         @current_member = current_member
         @member = Member.all
-        @post = Post.all
-        @post_all=Post.order(created_at: :desc)
+        @post = Post.order(created_at: :ASC)
         @reply = Reply.order(created_at: :ASC)
     end
     def post
@@ -74,7 +73,7 @@ class Account::PostController < Account::Base
         @current_account = current_account
         @current_member = current_member
         @member = Member.all
-        @post = Post.all
+        @post = Post.order(created_at: :ASC)
         @reply = Reply.order(created_at: :ASC)
         render "index"
     end

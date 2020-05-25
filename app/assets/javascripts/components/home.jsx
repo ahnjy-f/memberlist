@@ -1,10 +1,4 @@
 var Home = React.createClass({
-  // propTypes: {
-  //   current_member: React.PropTypes.string
-  // },
-  // Home.defaultProps = {
-  //   name: '管理者'
-  // };
     render() {
     let data
     let n = this.props.post.length
@@ -22,5 +16,4 @@ var Home = React.createClass({
       </div>
     );
   }
-
 });

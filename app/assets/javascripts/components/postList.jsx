@@ -15,7 +15,7 @@ var PostList = React.createClass({
 
     for(let i= 0; i < n; i++){
         console.log(i + ":::i   cmember.id:"+cmember.id+"== "+ post[i].member_id +":::id  n::"+n)
-        if(post[i].member_id==cmember.id){  
+        if(post[i].member_id==cmember.id){
             console.log(i +" ★hit! post[i].member_id[" + post[i].member_id +"] == "+ cmember.id +":cmember.id  length" + n)
             
             hit.unshift({
@@ -28,18 +28,14 @@ var PostList = React.createClass({
     }
     for(let i= 0; i < n; i++){
         console.log(i + ":::i   cmember.id:"+cmember.id+"== "+ reply[i].member_id +":::reply[i]member_id  n::"+n)
-        if(reply[i].member_id==cmember.id){  
+        if(reply[i].member_id==cmember.id){
             console.log(i +" ★hit! reply[i].member_id[" + reply[i].member_id +"] == "+ cmember.id +":cmember.id  length" + n)
             
             hit.unshift({
                 reply_id: reply[i].id,
                 created_at: reply[i].created_at
             }) 
-            console.log("postlist hitのなかみ！！！")
-            console.log(hit[0])
-            console.log(hit[1])
-            console.log(hit[2])
-            console.log(hit[3])
+            
         }
     }
     //取得した配列hitをcreated_atの降順にソートし直す
@@ -49,21 +45,25 @@ var PostList = React.createClass({
     return 0;
     });
 
+    console.log("postlist hitのなかみ！！！")
+            console.log(hit)
+            console.log(hit[0])
+            console.log(hit[1])
+            console.log(hit[2])
+            console.log(hit[3])
+
     //配列hitをdataへmapする
     let num =0 
     data = hit.map((value)=>(
-        console.log("num"+num),
-        console.log(hit[0]),
-            console.log(hit[1]),
-            console.log(hit[2]),
-            console.log(hit[3]),
-      <PostItem data={hit[0]} index={num++} post={post} reply={reply} member={member}/>
-    ))
+        console.log("★- - - ★hit[num]" + num),
+        <PostItem data={hit[num]} index={num++} post={post} reply={reply} member={member}/>
+     ))
     //★問題 data={hit[0]}→data={hit[num]}にしたい
     
         return (
         <div>
             <hr />
+            <PostItem data={hit[2]} index={num++} post={post} reply={reply} member={member}/>
             {data}
         </div>
         );

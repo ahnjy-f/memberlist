@@ -37,14 +37,16 @@ Rails.application.routes.draw do
     post "admin/result" => "admin#result"
     patch "admin/result" => "admin#result"
 
+    # post
     resources :post, only: [ :index, :create, :destroy]
-    resources :postlist, only: [ :index, :create, :destroy]
-    resources :likelist, only: [ :index, :create, :destroy]
-    post "post/:id" => "postlist#post"
-    get "post/create/:id" => "post#create"
-    post "reply/:id" => "postlist#reply"
     get "post/:id" => "post#post_like"
     get "post/reply/:id" => "post#reply_like"
+    get "account/post?:post" => "post#create"
+    resources :postlist, only: [ :index, :create, :destroy]
+    post "post/:id" => "postlist#post"
+    post "reply/:id" => "postlist#reply"
+    resources :likelist, only: [ :index, :create, :destroy]
+    get "post/create/:id" => "post#create"
     
   end
 
