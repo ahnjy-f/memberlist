@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_19_020557) do
+ActiveRecord::Schema.define(version: 2020_05_22_002544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,13 +29,11 @@ ActiveRecord::Schema.define(version: 2020_05_19_020557) do
   create_table "likes", force: :cascade do |t|
     t.bigint "member_id", null: false
     t.bigint "post_id"
-    t.bigint "reply_id"
-    t.integer "like"
+    t.boolean "like", default: false
     t.datetime "created_at", null: false
     t.index ["created_at"], name: "index_likes_on_created_at"
     t.index ["member_id", "created_at"], name: "index_likes_on_member_id_and_created_at"
     t.index ["post_id"], name: "index_likes_on_post_id"
-    t.index ["reply_id"], name: "index_likes_on_reply_id"
   end
 
   create_table "member_edit_histories", force: :cascade do |t|
@@ -89,6 +87,7 @@ ActiveRecord::Schema.define(version: 2020_05_19_020557) do
   create_table "posts", force: :cascade do |t|
     t.bigint "member_id", null: false
     t.string "post", null: false
+    t.integer "like", default: 0
     t.datetime "created_at", null: false
     t.index ["created_at"], name: "index_posts_on_created_at"
     t.index ["member_id", "created_at"], name: "index_posts_on_member_id_and_created_at"
@@ -98,18 +97,30 @@ ActiveRecord::Schema.define(version: 2020_05_19_020557) do
     t.bigint "member_id", null: false
     t.bigint "post_id", null: false
     t.string "reply", null: false
+    t.integer "like", default: 0
     t.datetime "created_at", null: false
     t.index ["created_at"], name: "index_replies_on_created_at"
     t.index ["member_id", "created_at"], name: "index_replies_on_member_id_and_created_at"
     t.index ["post_id"], name: "index_replies_on_post_id"
   end
 
+  create_table "replylikes", force: :cascade do |t|
+    t.bigint "reply_id", null: false
+    t.bigint "member_id", null: false
+    t.boolean "like", default: false
+    t.datetime "created_at", null: false
+    t.index ["created_at"], name: "index_replylikes_on_created_at"
+    t.index ["member_id", "created_at"], name: "index_replylikes_on_member_id_and_created_at"
+    t.index ["reply_id"], name: "index_replylikes_on_reply_id"
+  end
+
   add_foreign_key "accounts", "members"
   add_foreign_key "likes", "members"
   add_foreign_key "likes", "posts"
-  add_foreign_key "likes", "replies"
   add_foreign_key "member_edit_histories", "members"
   add_foreign_key "posts", "members"
   add_foreign_key "replies", "members"
   add_foreign_key "replies", "posts"
+  add_foreign_key "replylikes", "members"
+  add_foreign_key "replylikes", "replies"
 end

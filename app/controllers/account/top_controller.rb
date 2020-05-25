@@ -8,7 +8,6 @@ class Account::TopController < Account::Base
             @current_member = current_member
             redirect_to :account_show
         else
-
             pp "hello"
             pp "login ページに戻ります"
             redirect_to :account_login

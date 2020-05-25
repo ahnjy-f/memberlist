@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     get "show" => "sessions#show", as: :show
     post "post/:id" => "postlist#post"
     post "reply/:id" => "postlist#reply"
+    post "post_like/:id" => "postlist#post_like"
+    post "reply_like/:id" => "postlist#reply_like"
+    
     resource :session, only: [ :create, :destroy]
     
     # get "members/show" #フロフィール画面

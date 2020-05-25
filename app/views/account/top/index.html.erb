@@ -7,7 +7,11 @@
     <%= a.submit "投稿する"%>
     </div>
 <%end%>   
-    <%@p.each do |post|%>
+
+<%@members.each do |m|%>
+    
+    <%m.posts.each do |post|%>    
+        <%=m.last_name%>
             <p>
             <p>
             <div>
@@ -15,18 +19,25 @@
             </div>
             <p>
             <p>
+            <div>
 
-            <%post.likes.each do |plike|%>
-            <%= plike.like%>
+            <%if post.like!=nil then%>
+                like:<%=post.like%>
             <%end%>
             
-        <%= form_with model: Reply.new, url:"/account/reply/"+post.id.to_s do |a| %>
+            <%= form_with model: Reply.new, url:"/account/reply/"+post.id.to_s do |a| %>
             <%= a.text_field :reply, :placeholder => "コメントを残しましょう！",:size => "50" , required: true %>
-            <%= a.submit "投稿する"%>        
-        <%end%>
-        <%post.replies.each do |reply|%>
-            <div style="">
-            <%=reply.reply%>
-            </div>
+            <%= a.submit "投稿する"%>       
             <%end%>
-        <%end%>
+            <%= button_to 'いいね',"/account/post_like/"+post.id.to_s %>
+            
+            <%post.replies.each do |reply|%>
+            <span>
+            コメント:<%=reply.reply%>いいね:<%=reply.like%>
+            <%= button_to 'いいね',"/account/reply_like/"+reply.id.to_s %>
+            </span>
+            <%end%>
+
+        
+    <%end%>
+<%end%>
