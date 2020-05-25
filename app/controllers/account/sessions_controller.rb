@@ -47,7 +47,7 @@ class Account::SessionsController < Account::Base
 
     def show
         
-        @members=Member.order(created_at: :desc);
+        @members=Member.where(posts:!nil).order(created_at: :desc);
         @p=Post.order(created_at: :desc);
         @m=current_account;
         @current_account=current_account;
