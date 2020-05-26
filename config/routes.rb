@@ -46,7 +46,14 @@ Rails.application.routes.draw do
     post "post/:id" => "postlist#post"
     post "reply/:id" => "postlist#reply"
     resources :likelist, only: [ :index, :create, :destroy]
+
     get "post/create/:id" => "post#create"
+    
+    get "certification" => "top#certification"
+    get "change" => "top#change"
+    post "change" => "top#change"
+    patch "change/:id" => "top#update"
+
     
   end
 
