@@ -38,6 +38,12 @@ Rails.application.routes.draw do
     resources :post, only: [ :index, :create, :destroy]
     resources :postlist, only: [ :index, :create, :destroy]
     resources :likelist, only: [ :index, :create, :destroy]
+
+    get "certification" => "top#certification"
+    get "change" => "top#change"
+    post "change" => "top#change"
+    patch "change/:id" => "top#update"
+    
   end
 
 end
