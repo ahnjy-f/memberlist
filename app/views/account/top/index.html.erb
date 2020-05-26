@@ -3,24 +3,28 @@
         <%= react_component("Menu", { cmember: @current_account }, prerender: true) %>
         <%# <%= react_component("RailsProfile", { cmember: @current_account }, prerender: true) %> 
     </div>
-    <div class="col-md-8 border p0">
-
-    <div class="border p0">
-        <%= form_with model: Post.new, url:"/account/post/"+@m.id.to_s do |a| %>
-            <%=@m.id%>
-            <div>
-                <%= a.text_area :post , :placeholder => "今日はどんな気分ですか？",:size => "50" , required: true %>
-                <%= a.submit "投稿する"%>
+    <div class="col-md-8 border p0 m0">
+        <div class="border row m0">
+            <div class="col-md-2 p0">
+                <%= react_component("GetImage", { value: @current_member.face_photo_path.url }, prerender: true) %>
             </div>
-        <%end%>
-    </div>
+            <div class="col-md-10">
+                <%= form_with model: Post.new, url:"/account/post/"+@m.id.to_s do |a| %>
+                    <div>
+                        <%= a.text_area :post , :placeholder => "今日はどんな気分ですか？",:size => "50" ,class: "form-control", required: true %>
+                        <%= a.submit "Post"%>
+                    </div>
+                <%end%>
+            </div>
+        </div>
 
     <%@members.each do |m|%>
         <%m.posts.each do |post|%>    
             
             <div class="border p0">
-                *<%= react_component("Content", { value: m.last_name }, prerender: true) %>
-                *<%= react_component("Content", { value: post.post }, prerender: true) %>
+            <%= react_component("GetImage", { value: m.face_photo_path.url }, prerender: true) %>
+            <%=m.last_name%><%=m.first_name%>
+                <%= react_component("Content", { value: post.post }, prerender: true) %>
                 
                 <%if post.like!=nil then%>
                     like:<%= react_component("Content", { value: post.like }, prerender: true) %>
@@ -30,19 +34,21 @@
                 <%end%>
                 
                 <%= form_with model: Reply.new, url:"/account/reply/"+post.id.to_s do |a| %>
-                    <%= a.text_field :reply, :placeholder => "コメントを残しましょう！",:size => "50" , required: true %>
-                    <%= a.submit "投稿する"%>       
+                    <%= a.text_field :reply, :placeholder => "コメントを残しましょう！",:size => "50",class: "form-control", required: true %>
+                    <%= a.submit "Reply"%>       
                 <%end%>
-                <%= button_to 'いいね',"/account/post_like/"+post.id.to_s %>
+                <%= button_to 'いいね',"/account/post_like/"+post.id.to_s, class: "rounded-pill" %>
             </div>
 
+            
             <%post.replies.each do |reply|%>
-            <div class="border p0">
-                <span>
-                コメント:<%=reply.reply%>いいね:<%=reply.like%>
-                <%= button_to 'いいね',"/account/reply_like/"+reply.id.to_s %>
-                </span>
-            </div>
+                <div class="border p0">
+                <%= react_component("GetImage", { value: reply.member.face_photo_path.url }, prerender: true) %>
+                    <%=reply.member.last_name%><%=reply.member.first_name%>
+                    <%= react_component("Content", { value: reply.reply }, prerender: true) %>
+                    いいね:<%= react_component("Content", { value: reply.like }, prerender: true) %>
+                    <%= button_to 'いいね',"/account/reply_like/"+reply.id.to_s %>
+                </div>
             <%end%>
             
         <%end%>

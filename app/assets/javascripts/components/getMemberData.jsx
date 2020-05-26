@@ -1,8 +1,4 @@
 var GetMemberDate = React.createClass({
-    // propTypes: {
-    //     current_member: React.PropTypes.string
-    // },
-    // 'いいね',"/account/post_like/"+post.id.to_s 
     getInitialState: function(){
         return {
             data: "state",
@@ -12,19 +8,17 @@ var GetMemberDate = React.createClass({
     render(){
         let member = this.props.member
         let ID = this.props.memberid
-
-        let data
         let hit =[]
 
         for(let i=0; i < member.length; i++){
-            console.log(i + ":i "+ ID +": ID + length:"+ member.length )
+            // console.log(i + ":i "+ ID +": ID + length:"+ member.length )
             if(member[i].id==ID){ 
             hit.unshift(
+                member[i].face_photo_path.url,
                 member[i].last_name,
-                member[i].first_name,
-                member[i].face_photo_path.url)
-           console.log("hit")
-           console.log(hit)
+                member[i].first_name)
+        //    console.log("hit")
+        //    console.log(hit)
            break
             }
           }
@@ -33,10 +27,11 @@ var GetMemberDate = React.createClass({
       return (
         <div>
             <div>
-                <img src={hit[2]} style={{width:"50px"}}/>
+                <GetImage value={hit[0]} />
+                {/* <img src={hit[0]} style={{width:"50px",borderRadius: 50,margin: 5}}/> */}
             </div>
             <div>
-                {hit[0]}　{hit[1]}　
+                {hit[1]}　{hit[2]}　
             </div>
         </div>
       );

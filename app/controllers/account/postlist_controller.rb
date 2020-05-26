@@ -78,13 +78,7 @@ class Account::PostlistController < Account::Base
             pp "======"
 
         end 
-        @current_account = current_account
-        @current_member = current_member
-        @member = Member.all
-        @post = Post.order(created_at: :ASC)
-        @post_all=Post.order(created_at: :desc)
-        @reply = Reply.order(created_at: :ASC)
-        
+        redirect_to:account_root;
     end
 
     def reply_like
@@ -121,12 +115,7 @@ class Account::PostlistController < Account::Base
             pp b;
             pp "======"
         end 
-        @current_account = current_account
-        @current_member = current_member
-        @member = Member.all
-        @post = Post.order(created_at: :ASC)
-        @post_all=Post.order(created_at: :desc)
-        @reply = Reply.order(created_at: :ASC)
+        redirect_to:account_root;
     end
     
     private def post_params
