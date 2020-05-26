@@ -3,7 +3,7 @@ class Account::PostController < Account::Base
         #account/post 投稿ページ＞Homeの表示
         @current_account = current_account
         @current_member = current_member
-        @member = Member.all
+        @members = Member.where(posts:!nil)
         @post = Post.order(created_at: :ASC)
         @reply = Reply.order(created_at: :ASC)
     end

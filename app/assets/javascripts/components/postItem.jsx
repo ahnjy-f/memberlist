@@ -1,6 +1,7 @@
 var PostItem = React.createClass({
   
     render(){
+
         console.log("this.props.data postItem - - - - - - - - - - -- - ")
         console.log(this.props)
         let data = this.props.data
@@ -61,19 +62,42 @@ var PostItem = React.createClass({
             }
         }
         
+        div = {
+            display: 'inline-block',
+            width: "550px",
+            border: "1px solid #cccccc",
+            padding: 10,
+            margin: 5,
+            fontSize: "0.8em"
+        };
+        right = {
+            padding: 5,
+            textAlign: "right" 
+        };
+        content={
+            lineHeight:2,
+        }
+        fontSizeS = {
+            fontSize: "0.7em",
+        };
+        fontSizeM = {
+            fontSize: "0.9em",
+        };
+        
       return (
-        <div>
+        <div style={div}>
+            <GetMemberDate member={this.props.member} memberid={hit[0].data.member_id}/>
+            <div style={fontSizeS}>
+                {data.created_at}
+            </div>
             <hr/>
-            
-            {idname}
-            
-             <GetMemberDate member={this.props.member} memberid={hit[0].data.member_id}/> 
-            
-            {hit[0].content}
-
-            <LikeButton url={hit[0].likeurl} data={hit[0].data.like}/>
-            
-            {data.created_at}
+            <div style={content}>
+                {hit[0].content}
+            </div>
+            <div style={right}>
+                <span style={fontSizeS}>{idname}</span>
+                <LikeButton url={hit[0].likeurl} data={hit[0].data.like}/>
+            </div>
         </div>
       );
     }

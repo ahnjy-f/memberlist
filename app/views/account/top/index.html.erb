@@ -1,43 +1,51 @@
-<% @title = "Post ページ" %>
-<h1><%= @title %></h1>
-<%= form_with model: Post.new, url:"/account/post/"+@m.id.to_s do |a| %>
-    <%=@m.id%>
-    <div>
-    <%= a.text_area :post , :placeholder => "今日はどんな気分ですか？",:size => "100" , required: true %>
-    <%= a.submit "投稿する"%>
+<div class="row m0">
+    <div class="col-md-4 border pl-4 pt-3">
+        <%= react_component("Menu", { cmember: @current_account }, prerender: true) %>
+        <%# <%= react_component("RailsProfile", { cmember: @current_account }, prerender: true) %> 
     </div>
-<%end%>   
+    <div class="col-md-8 border p0">
 
-<%@members.each do |m|%>
-    
-    <%m.posts.each do |post|%>    
-        <%=m.last_name%>
-            <p>
-            <p>
+    <div class="border p0">
+        <%= form_with model: Post.new, url:"/account/post/"+@m.id.to_s do |a| %>
+            <%=@m.id%>
             <div>
-            <%=post.post%>
+                <%= a.text_area :post , :placeholder => "今日はどんな気分ですか？",:size => "50" , required: true %>
+                <%= a.submit "投稿する"%>
             </div>
-            <p>
-            <p>
-            <div>
+        <%end%>
+    </div>
 
-            <%if post.like!=nil then%>
-                like:<%=post.like%>
-            <%end%>
+    <%@members.each do |m|%>
+        <%m.posts.each do |post|%>    
             
-            <%= form_with model: Reply.new, url:"/account/reply/"+post.id.to_s do |a| %>
-            <%= a.text_field :reply, :placeholder => "コメントを残しましょう！",:size => "50" , required: true %>
-            <%= a.submit "投稿する"%>       
-            <%end%>
-            <%= button_to 'いいね',"/account/post_like/"+post.id.to_s %>
-            
+            <div class="border p0">
+                *<%= react_component("Content", { value: m.last_name }, prerender: true) %>
+                *<%= react_component("Content", { value: post.post }, prerender: true) %>
+                
+                <%if post.like!=nil then%>
+                    like:<%= react_component("Content", { value: post.like }, prerender: true) %>
+                <%end%>
+                <%if @current_member.id==post.member_id then%>
+                    <a>　削除 </a>
+                <%end%>
+                
+                <%= form_with model: Reply.new, url:"/account/reply/"+post.id.to_s do |a| %>
+                    <%= a.text_field :reply, :placeholder => "コメントを残しましょう！",:size => "50" , required: true %>
+                    <%= a.submit "投稿する"%>       
+                <%end%>
+                <%= button_to 'いいね',"/account/post_like/"+post.id.to_s %>
+            </div>
+
             <%post.replies.each do |reply|%>
-            <span>
-            コメント:<%=reply.reply%>いいね:<%=reply.like%>
-            <%= button_to 'いいね',"/account/reply_like/"+reply.id.to_s %>
-            </span>
+            <div class="border p0">
+                <span>
+                コメント:<%=reply.reply%>いいね:<%=reply.like%>
+                <%= button_to 'いいね',"/account/reply_like/"+reply.id.to_s %>
+                </span>
+            </div>
             <%end%>
-
-        
+            
+        <%end%>
     <%end%>
-<%end%>
+    </div>
+</div>

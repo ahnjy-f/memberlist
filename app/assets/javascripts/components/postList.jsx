@@ -62,7 +62,6 @@ var PostList = React.createClass({
     
         return (
         <div>
-            <hr />
             <PostItem data={hit[2]} index={num++} post={post} reply={reply} member={member}/>
             {data}
         </div>

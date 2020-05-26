@@ -26,7 +26,12 @@ div#container{
 div#container_div {
     flex: 1;
   }
-  
+div.p0{
+    padding: 0;
+}
+div.m0{
+    margin: 0;
+}
 header{
     width: 100%;
     height: $very_wide*3.5;

@@ -39,10 +39,10 @@ Rails.application.routes.draw do
 
     # post
     resources :post, only: [ :index, :create, :destroy]
-    get "post/:id" => "post#post_like"
-    get "post/reply/:id" => "post#reply_like"
     get "account/post?:post" => "post#create"
     resources :postlist, only: [ :index, :create, :destroy]
+    get "post/:id" => "postlist#post_like"
+    get "post/reply/:id" => "postlist#reply_like"
     post "post/:id" => "postlist#post"
     post "reply/:id" => "postlist#reply"
     resources :likelist, only: [ :index, :create, :destroy]

@@ -17,6 +17,13 @@ class Account::PostlistController < Account::Base
         a.assign_attributes(post_params);
         a.save;
         redirect_to:account_root;
+
+        @current_account = current_account
+        @current_member = current_member
+        @member = Member.all
+        @post = Post.order(created_at: :ASC)
+        @post_all=Post.order(created_at: :desc)
+        @reply = Reply.order(created_at: :ASC)
     end
     
     def reply
@@ -71,7 +78,12 @@ class Account::PostlistController < Account::Base
             pp "======"
 
         end 
-
+        @current_account = current_account
+        @current_member = current_member
+        @member = Member.all
+        @post = Post.order(created_at: :ASC)
+        @post_all=Post.order(created_at: :desc)
+        @reply = Reply.order(created_at: :ASC)
         
     end
 
@@ -109,6 +121,12 @@ class Account::PostlistController < Account::Base
             pp b;
             pp "======"
         end 
+        @current_account = current_account
+        @current_member = current_member
+        @member = Member.all
+        @post = Post.order(created_at: :ASC)
+        @post_all=Post.order(created_at: :desc)
+        @reply = Reply.order(created_at: :ASC)
     end
     
     private def post_params
