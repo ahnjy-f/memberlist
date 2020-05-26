@@ -3,10 +3,8 @@ class Account::MembersController < Account::Base
     def index
         @current_account = current_account
         @current_member = current_member
-        @member = Member.order(:first_name, :last_name)
-        @member = @member.page(params[:page])
-        
-        
+        @member = Member.order(updated_at: "DESC")
+        @member = @member.page(params[:page])  
     end
     
     def detail

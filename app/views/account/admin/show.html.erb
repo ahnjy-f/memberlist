@@ -22,8 +22,6 @@
             <th>生年月日</th>
             <th>入社日</th>
             <th>退職日</th>
-            <th>作成日</th>
-            <th>更新日</th>
         </tr>
         <% @m.each do |m| %>
         <tr class="none">
@@ -31,13 +29,11 @@
                 <%= link_to "更新" , m.id.to_s+"/edit"%>
             </td>
             <td><%= m.id %></td>
-            <td><%= m.last_name %></td>
-            <td><%= m.first_name_phonetic %></td>
+            <td><%= m.last_name %> <%= m.first_name %></td>
+            <td><%= m.last_name_phonetic %> <%= m.first_name_phonetic %></td>
             <td ><%= m.birth_year_month%></td>
             <td><%= m.joining_year %></td>
             <td><%= m.deleted_at.try(:strftime, "%Y/%m/%d") %></td>
-            <td><%= m.created_at.try(:strftime, "%Y/%m/%d") %></td>
-            <td><%= m.updated_at.try(:strftime, "%Y/%m/%d") %></td>
         </tr>
         <% end %>
     </table>
