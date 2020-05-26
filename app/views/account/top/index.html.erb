@@ -1,18 +1,18 @@
 <div class="row m0">
-    <div class="col-md-4 border pl-4 pt-3">
+    <div class="col-md-3  pl-4 pt-3">
         <%= react_component("Menu", { cmember: @current_account }, prerender: true) %>
         <%# <%= react_component("RailsProfile", { cmember: @current_account }, prerender: true) %> 
     </div>
-    <div class="col-md-8 border p0 m0">
-        <div class="border row m0">
-            <div class="col-md-2 p0">
+    <div class="col-md-9  p0 m0">
+        <div class=" row m0">
+            <div class="col-md-2 pt-2">
                 <%= react_component("GetImage", { value: @current_member.face_photo_path.url }, prerender: true) %>
             </div>
             <div class="col-md-10">
                 <%= form_with model: Post.new, url:"/account/post/"+@m.id.to_s do |a| %>
-                    <div>
-                        <%= a.text_area :post , :placeholder => "今日はどんな気分ですか？",:size => "50" ,class: "form-control", required: true %>
-                        <%= a.submit "Post"%>
+                    <div class="text-right">
+                        <%= a.text_area :post , :placeholder => "今日はどんな気分ですか？" ,class: "form-control ",style:"height: 100px;", required: true %>
+                        <%= a.submit "投稿" ,class: "button mt-2 mb-2"%>
                     </div>
                 <%end%>
             </div>
@@ -20,35 +20,74 @@
 
     <%@members.each do |m|%>
         <%m.posts.each do |post|%>    
-            
-            <div class="border p0">
-            <%= react_component("GetImage", { value: m.face_photo_path.url }, prerender: true) %>
-            <%=m.last_name%><%=m.first_name%>
-                <%= react_component("Content", { value: post.post }, prerender: true) %>
+            <div class="p0">
+            <hr />
+                <div class="row m0">
+                    <div class="col-md-2 pt-2">
+                        <%= react_component("GetImage", { value: m.face_photo_path.url }, prerender: true) %>
+                    </div>
+
+
+                    <div class="col-md-10 text-left pt-2">
+                        <span class="s"><ruby>
+                                  <%=m.last_name%><rt><%=m.last_name_phonetic%></rt>
+                            &nbsp;<%=m.first_name%><rt><%=m.first_name_phonetic%></rt>
+                        </ruby></span>
+                        <span class="ss"> @<%=m.one_word_comment%></span> 
+                        <span class="ss orange"> <%=post.created_at%></span> 
+                        
+                        <p class="mt-2 mb-2">
+                            <%= react_component("Content", { value: post.post }, prerender: true) %>
+                        </p>
+
+
+                        <div class="text-right inline_form">
+                        
+                            <%= form_with model: Reply.new, url:"/account/reply/"+post.id.to_s do |a| %>
+                                <%= a.text_field :reply, :placeholder => "コメントを残しましょう！",:size => "50",class: "form-control", required: true %>
+                                <%= a.submit "返信",class: "button mt-2 mb-2"%>   
+                            <%end%>
+                            <%if @current_member.id==post.member_id then%>
+                                <%= button_to "削除",account_root_path(post),class: "button postform", method: :delete %>
+                            <%end%>
+
+                            <%= button_to 'いいね',"/account/post_like/"+post.id.to_s, class: "button" %>
+                            <%# <%if post.like!=nil then%>
+                                <%# <span class="ss"><%= react_component("Content", { value: post.like }, prerender: true) %>
+                                <%# </span> %>
+                            <%# <%end%> 
+                        </div>
+                    </div>
+                </div>
                 
-                <%if post.like!=nil then%>
-                    like:<%= react_component("Content", { value: post.like }, prerender: true) %>
-                <%end%>
-                <%if @current_member.id==post.member_id then%>
-                    <a>　削除 </a>
-                <%end%>
                 
-                <%= form_with model: Reply.new, url:"/account/reply/"+post.id.to_s do |a| %>
-                    <%= a.text_field :reply, :placeholder => "コメントを残しましょう！",:size => "50",class: "form-control", required: true %>
-                    <%= a.submit "Reply"%>       
-                <%end%>
-                <%= button_to 'いいね',"/account/post_like/"+post.id.to_s, class: "rounded-pill" %>
+                
             </div>
 
             
             <%post.replies.each do |reply|%>
-                <div class="border p0">
-                <%= react_component("GetImage", { value: reply.member.face_photo_path.url }, prerender: true) %>
-                    <%=reply.member.last_name%><%=reply.member.first_name%>
-                    <%= react_component("Content", { value: reply.reply }, prerender: true) %>
-                    いいね:<%= react_component("Content", { value: reply.like }, prerender: true) %>
-                    <%= button_to 'いいね',"/account/reply_like/"+reply.id.to_s %>
+                <div class="row m0">
+                    <div class="col-md-2 pt-2">
+                        <%= react_component("GetImage", { value: reply.member.face_photo_path.url }, prerender: true) %>
+                    </div>
+                    <div class="col-md-10 text-left pt-2">
+                        <span class="s"><ruby>
+                                    <%=reply.member.last_name%>   <rt><%=reply.member.last_name_phonetic%></rt>
+                                &nbsp;<%=reply.member.first_name%>  <rt><%=reply.member.first_name_phonetic%></rt>
+                            </ruby></span>
+                            <span class="ss"> @<%=reply.member.one_word_comment%></span> 
+                            <span class="ss orange"> <%=reply.created_at%></span>
+
+                        <p class="mt-2 mb-2">
+                            <%= react_component("Content", { value: reply.reply }, prerender: true) %>
+                        </p>
+                        <div class="text-right inline_form">
+                            <span class="orange ss"><%= react_component("Content", { value: reply.like }, prerender: true) %></span>
+                            <%= button_to 'いいね',"/account/reply_like/"+reply.id.to_s,class: "button mb-2" %>
+                        </div>
+                    </div>
                 </div>
+
             <%end%>
             
         <%end%>
