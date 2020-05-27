@@ -23,7 +23,7 @@ div#container{
     flex: 1;
     align-items: center;
 }
-div#container_div {
+div#container_div{
     flex: 1;
   }
 div.p0{
@@ -38,6 +38,10 @@ header{
     background-color: $white;
     color: $dark_gray;
     position: relative;
+    a{
+        text-decoration: none !important;
+        color: $dark-gray;
+    }
     div.square{
         height: 15px;
         width: 15px;
@@ -47,7 +51,7 @@ header{
         left: 5px;
     }
     h1{
-        width: 250px;
+        font-family: 'M PLUS Rounded 1c', sans-serif;
         margin-bottom: 0;
         font-size: $huge;
         line-height: 1.5;
@@ -59,26 +63,36 @@ header{
         position: absolute;
         top: 25%;
         right: 15%;
+        display: flex; flex-direction: row;
         a{
             text-decoration: none;
-            transition    : .3s;         /* なめらか変化 */
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            float: right;
+            margin-left: 30px;
+            
+            div#a{ order: 1; }
+            div#b{ order: 2; }
+            div#c{ order: 3; }
         }
-        a:hover {
-            opacity       : 0.5;           /* カーソル時透明度 */
+        .line{
+            color: $dark-gray;
+            border-bottom: 1px solid $orange;
         }
     }
+    a.hover{
+        text-decoration: none;
+        transition: .3s; /* なめらか変化 */
+        }
+        a.hover:hover {
+            opacity: 0.5; /* カーソル時透明度 */
+        }
     li{
         display: inline-block;
         padding-right: $very-wide;
     }
     p{
         text-align: center;
-        
-    }
-    a{
-        float: right;
-        color: $dark-gray;
-        border-bottom: 1px solid $orange;
+        margin: 0;
     }
     .icon{
         width: 40px;
@@ -97,17 +111,28 @@ header{
 .header2{
     height:$very_wide*2.5;
     background-color: $orange;
+    .right{
+        float: right;
+        position: absolute;
+        top: 8%;
+        right: 0;
     li:first-child{
         border-right: 1px solid $white;
     }
+    li:nth-child(2){
+        padding-left: $wide;
+        padding-right: 10px;
+    }
     li:last-child{
         position: relative;
-        top: -8px;
+        top: -1px;
         right: 10px;
+        padding-right: 0;
        form.button_to{
             text-align: center;
             
             input[type='submit']{
+                width: 100px;
                 padding: $wide $wide * 2;
                 background-color: $orange;
                 border: none;
@@ -115,6 +140,7 @@ header{
             }
         }
     }
+}
     li{
         a{
             color: $white;
