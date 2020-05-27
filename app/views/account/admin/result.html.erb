@@ -26,5 +26,10 @@
             </tr>
         <% end %>
     </table>
+    <div id="search-form">
+    <%= form_with model: @member, url: [ :account_admin_result ] do |f| %>
+        <%= render "search_form", f: f %>
+    <% end %>
+    </div>
     <%= link_to "back", "/account/admin/show" %>
 </div>
