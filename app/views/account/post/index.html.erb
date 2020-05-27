@@ -1,2 +1,4 @@
 <%= react_component("Menu", { current_member: @current_member }, prerender: true) %>
-<%= react_component("Home", { current_member: @current_member}, prerender: true) %>
+<%= react_component("Home", { current_member: @current_member,member: @member,  post: @post, reply: @reply}, prerender: true) %>
+
+<div id="root">...</div>

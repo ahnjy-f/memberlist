@@ -1,0 +1,32 @@
+@import "colors";
+@import "dimensions";
+
+.button{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 50rem;
+    font-size: small;
+    display: inline;
+}
+.inline_form{
+    form{
+        display: inline;
+    }
+    .button_to{
+        display: inline;
+    }
+}
+
+.b{
+    font-weight: bolder;
+}
+.s{
+    font-size: small;
+}
+.ss{
+    font-size: 0.6rem;
+}
+.orange{
+    color: $orange;
+}
+

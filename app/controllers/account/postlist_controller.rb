@@ -1,10 +1,14 @@
 require "pp"
 class Account::PostlistController < Account::Base
     def index
-            @current_account = current_account
-            @current_member = current_member
-            @post = Member.all
-            # render json: @post
+
+        @current_account = current_account
+        @current_member = current_member
+        @member = Member.all
+        @post = Post.order(created_at: :ASC)
+        @post_all=Post.order(created_at: :desc)
+        @reply = Reply.order(created_at: :ASC)
+
     end
     def post
         p=Member.find(params[:id]);
@@ -13,6 +17,7 @@ class Account::PostlistController < Account::Base
         a.assign_attributes(post_params);
         a.save;
         redirect_to:account_root;
+
     end
     
     def reply
@@ -67,8 +72,7 @@ class Account::PostlistController < Account::Base
             pp "======"
 
         end 
-
-        
+        redirect_to:account_root;
     end
 
     def reply_like
@@ -105,6 +109,21 @@ class Account::PostlistController < Account::Base
             pp b;
             pp "======"
         end 
+        redirect_to:account_root;
+    end
+
+    def delete
+        Post.find(params[:id]).replies.delete_all
+        pp Post.find(params[:id]).like.nil?
+        if !Like.find_by(post_id:params[:id]).nil?
+            Like.find_by(post_id:params[:id]).delete
+        end
+        Post.find(params[:id]).delete
+        redirect_to:account_root;
+    end
+    def deletereply
+        Reply.find(params[:id]).delete;
+        redirect_to:account_root;
     end
     
     def delete
