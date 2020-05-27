@@ -13,6 +13,13 @@
     </div>
     <%# <%= render '', post: @m.klass %>
 
+    <div id="category-form">
+        <%= form_with model: @member, url: :account_admin_show do |j| %>
+            <%= j.select :category,[['id', 1], ['姓', 2], ['姓(フリガナ)', 3]] %>
+            <%= j.submit "並べ替え" %>
+        <% end %>
+    </div>
+
     <table class = "listing">
         <tr>
             <th></th>

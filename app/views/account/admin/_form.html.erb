@@ -36,6 +36,22 @@
     </tr>
     <tr>
         <th>
+            <%= f.label :birth_year_month, "誕生年月", class: "required" %>
+        </th>
+        <td>
+            <%= f.number_field :birth_year_month, :placeholder => "YYYYMMDD", required: true %>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <%= f.label :joining_year, "入社日", class: "required" %>
+        </th>
+        <td>
+            <%= f.number_field :joining_year, :placeholder => "YYYYMMDD", required: true %>
+        </td>
+    </tr>
+    <tr>
+        <th>
             <%= f.label :deleted_at, "退職日" %>
         </th>
         <td>
