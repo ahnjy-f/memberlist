@@ -20,7 +20,7 @@
     </tr>
     <tr>
         <th>
-            <%= f.label :last_name_phonetic, "ふりがな(姓)", class: "required" %>
+            <%= f.label :last_name_phonetic, "フリガナ(姓)", class: "required" %>
         </th>
         <td>
             <%= f.text_field :last_name_phonetic, size: 32, required: true %>
@@ -28,7 +28,7 @@
     </tr>
     <tr>
         <th>
-            <%= f.label :first_name_phonetic, "ふりがな(名)", class: "required" %>
+            <%= f.label :first_name_phonetic, "フリガナ(名)", class: "required" %>
         </th>
         <td>
             <%= f.text_field :first_name_phonetic, size: 32, required: true %>
@@ -39,7 +39,7 @@
             <%= f.label :birth_year_month, "誕生年月", class: "required" %>
         </th>
         <td>
-            <%= f.number_field :birth_year_month, :placeholder => "YYYYMMDD", required: true %>
+            <%= f.number_field :birth_year_month, :placeholder => "YYYYMMDD", min:18000101, required: true %>
         </td>
     </tr>
     <tr>
@@ -47,7 +47,7 @@
             <%= f.label :joining_year, "入社日", class: "required" %>
         </th>
         <td>
-            <%= f.number_field :joining_year, :placeholder => "YYYYMMDD", required: true %>
+            <%= f.number_field :joining_year, :placeholder => "YYYYMMDD", min:18000101, required: true %>
         </td>
     </tr>
     <tr>
