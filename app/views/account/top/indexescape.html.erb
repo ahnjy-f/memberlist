@@ -32,6 +32,7 @@
             <%= button_to 'いいね',"/account/post_like/"+post.id.to_s %>
             
             <%post.replies.each do |reply|%>
+            
             <span>
             コメント:<%=reply.reply%>いいね:<%=reply.like%>
             <%= button_to 'いいね',"/account/reply_like/"+reply.id.to_s %>

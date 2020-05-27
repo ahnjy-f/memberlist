@@ -48,7 +48,9 @@
                                 <%= a.submit "返信",class: "button mt-2 mb-2"%>   
                             <%end%>
                             <%if @current_member.id==post.member_id then%>
-                                <%= button_to "削除",account_root_path(post),class: "button postform", method: :delete %>
+                                <%= form_with model: Post.new, url: "/account/delete/"+post.id.to_s do |f| %>
+                                <%= f.submit "削除",class: "button" %>
+                                <%end%> 
                             <%end%>
 
                             <%= button_to 'いいね',"/account/post_like/"+post.id.to_s, class: "button" %>
@@ -68,7 +70,7 @@
             <%post.replies.each do |reply|%>
                 <div class="row m0">
                     <div class="col-md-2 pt-2">
-                        <%= react_component("GetImage", { value: reply.member.face_photo_path.url }, prerender: true) %>
+                        <%= react_component("GetImageR", { value: reply.member.face_photo_path.url }, prerender: true) %>
                     </div>
                     <div class="col-md-10 text-left pt-2">
                         <span class="s"><ruby>
@@ -82,8 +84,14 @@
                             <%= react_component("Content", { value: reply.reply }, prerender: true) %>
                         </p>
                         <div class="text-right inline_form">
-                            <span class="orange ss"><%= react_component("Content", { value: reply.like }, prerender: true) %></span>
+                            <%if @current_member.id==reply.member.id then%>
+                                    <%= form_with model: Reply.new, url: "/account/deletereply/"+reply.id.to_s do |f| %>
+                                    <%= f.submit "削除",class: "button" %>
+                                    <%end%> 
+                            <%end%>
                             <%= button_to 'いいね',"/account/reply_like/"+reply.id.to_s,class: "button mb-2" %>
+                            <%# <span class="orange ss"><%= react_component("Content", { value: reply.like }, prerender: true) %>
+                            <%# </span> %> 
                         </div>
                     </div>
                 </div>

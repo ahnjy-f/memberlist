@@ -7,9 +7,12 @@ Rails.application.routes.draw do
 
     post "post/:id" => "postlist#post"
     post "reply/:id" => "postlist#reply"
-
+    
     post "post_like/:id" => "postlist#post_like"
     post "reply_like/:id" => "postlist#reply_like"
+    
+    post "delete/:id" => "postlist#delete"
+    post "deletereply/:id" => "postlist#deletereply"
     
     resource :session, only: [ :create, :destroy]
     
@@ -39,16 +42,13 @@ Rails.application.routes.draw do
 
     # post
     resources :post, only: [ :index, :create, :destroy]
-    get "account/post?:post" => "post#create"
     resources :postlist, only: [ :index, :create, :destroy]
     get "post/:id" => "postlist#post_like"
     get "post/reply/:id" => "postlist#reply_like"
     post "post/:id" => "postlist#post"
     post "reply/:id" => "postlist#reply"
     resources :likelist, only: [ :index, :create, :destroy]
-
-    get "post/create/:id" => "post#create"
-
+    
     get "certification" => "top#certification"
     get "change" => "top#change"
     post "change" => "top#change"
