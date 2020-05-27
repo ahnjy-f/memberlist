@@ -2,7 +2,7 @@
     <div class="square"></div>
 
     <% @title = "MemberList" %>
-    <h1><a href="/account/admin"><%= @title %></a></h1>
+    <h1><a href="/account/show"><%= @title %></a></h1>
 
     <%= content_tag(:span, flash.notice, class: "notice") if flash.notice %>
     <%= content_tag(:span, flash.alert, class: "alert") if flash.alert %>
@@ -18,19 +18,24 @@
 
     <% if current_account %>
     <div class="menu">
-            <a href="/account"><div>
-                <p class="line">ポスト</p>
-                <p>Post</p>
-            </div></a>
-            <a href="/account/members/show"><div>
-                <p class="line">プロフィール</p>
-                <p>Profile</p>
-            </div></a>
-            <a href="/account/members/index"><div>
-                <p class="line">メンバー一覧</p>
-                <p>MemberList</p>
-            </div></a>
-            
+            <a href="/account" class="hover">
+                <div id="a">
+                    <p class="line">ポスト</p>
+                    <p>Post</p>
+                </div>
+            </a>
+            <a href="/account/members/show" class="hover">
+                <div id="b">
+                    <p class="line">プロフィール</p>
+                    <p>Profile</p>
+                </div>
+            </a>
+            <a href="/account/members/index" class="hover">
+                <div id="c">
+                    <p class="line">メンバー一覧</p>
+                    <p>MemberList</p>
+                </div>
+            </a>   
     </div>
 
         <div class="right">
