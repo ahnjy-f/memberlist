@@ -4,7 +4,7 @@
 div#wrapper{
     div#container{
         div#generic-form{
-            width: 480px;
+            width: 700px;
             margin: $wide * 2 auto;
             padding: $wide * 2;
             border: solid 1px $dark-gray;
@@ -14,6 +14,18 @@ div#wrapper{
 
             
             form{
+                table{
+                    width: 100%;
+                    th{
+                        width: auto;
+                    }
+                    label.required:after{
+                        content: '*';
+                        padding-left: $narrow;
+                        color: $red;
+                    }
+                }
+
                 div{
                     padding: $wide;
                     label{

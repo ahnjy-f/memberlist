@@ -84,7 +84,7 @@ class Account::AdminController < Account::Base
 
     def result
         pp "検索を始めます。"
-        @searches = Member.where('created_at >= :years_ago', :years_ago => Time.now-60.years).where("last_name ilike '%#{params[:search_text]}%'")
+        @searches = Member.where('created_at >= :years_ago', :years_ago => Time.now-60.years).where("last_name ilike '%#{params[:search_text]}%'").order(:id)
         # @searches = eval(params[:model]).where('created_at >= :years_ago', :years_ago => Time.now-60.years).where("last_name LIKE ? '%#{params[:search_text]}%'")
         pp @searches
     end
