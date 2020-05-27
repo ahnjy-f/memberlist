@@ -18,23 +18,22 @@
             </div>
         </div>
 
-    <%@members.each do |m|%>
-        <%m.posts.each do |post|%>    
+        <%@post.each do |post|%>    
             <div class="p0">
             <hr />
                 <div class="row m0">
                     <div class="col-md-2 pt-2">
-                        <%= react_component("GetImage", { value: m.face_photo_path.url }, prerender: true) %>
+                        <%= react_component("GetImage", { value: post.member.face_photo_path.url }, prerender: true) %>
                     </div>
 
 
                     <div class="col-md-10 text-left pt-2">
                         <span class="s"><ruby>
-                                  <%=m.last_name%><rt><%=m.last_name_phonetic%></rt>
-                            &nbsp;<%=m.first_name%><rt><%=m.first_name_phonetic%></rt>
+                                  <%=post.member.last_name%><rt><%=post.member.last_name_phonetic%></rt>
+                            &nbsp;<%=post.member.first_name%><rt><%=post.member.first_name_phonetic%></rt>
                         </ruby></span>
-                        <span class="ss"> @<%=m.one_word_comment%></span> 
-                        <span class="ss orange"> <%=post.created_at%></span> 
+                        <span class="ss"> @<%=post.member.one_word_comment%></span> 
+                        <span class="ss orange"> <%=post.created_at.strftime("%Y年%m月%d日%-H時%-M分")%></span> 
                         
                         <p class="mt-2 mb-2">
                             <%= react_component("Content", { value: post.post }, prerender: true) %>
@@ -46,11 +45,6 @@
                             <%= form_with model: Reply.new, url:"/account/reply/"+post.id.to_s do |a| %>
                                 <%= a.text_field :reply, :placeholder => "コメントを残しましょう！",:size => "50",class: "form-control", required: true %>
                                 <%= a.submit "返信",class: "button mt-2 mb-2"%>   
-                            <%end%>
-                            <%if @current_member.id==post.member_id then%>
-                                <%= form_with model: Post.new, url: "/account/delete/"+post.id.to_s do |f| %>
-                                <%= f.submit "削除",class: "button" %>
-                                <%end%> 
                             <%end%>
 
 
@@ -86,7 +80,7 @@
                                 &nbsp;<%=reply.member.first_name%>  <rt><%=reply.member.first_name_phonetic%></rt>
                             </ruby></span>
                             <span class="ss"> @<%=reply.member.one_word_comment%></span> 
-                            <span class="ss orange"> <%=reply.created_at%></span>
+                            <span class="ss orange"> <%=reply.created_at.strftime("%Y年%m月%d日%-H時%-M分")%></span>
 
                         <p class="mt-2 mb-2">
                             <%= react_component("Content", { value: reply.reply }, prerender: true) %>
@@ -107,6 +101,5 @@
             <%end%>
             
         <%end%>
-    <%end%>
     </div>
 </div>
