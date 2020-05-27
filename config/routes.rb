@@ -5,9 +5,6 @@ Rails.application.routes.draw do
     get "login" => "sessions#new", as: :login
     get "show" => "sessions#show", as: :show
 
-    post "delete/:id" => "postlist#delete"
-    post "deletereply/:id" => "postlist#deletereply"
-
     post "post/:id" => "postlist#post"
     post "reply/:id" => "postlist#reply"
     
