@@ -16,6 +16,19 @@ div#wrapper{
                     border-bottom: solid 2px $dark_gray;
                     display: inline;
                 }
+                .container{
+                    .row{
+                        padding-top: $very-wide;
+                        .col-3{
+                            .icon{
+                                width:100px;
+                                height:100px;
+                                margin: 0 auto;
+                                padding-bottom: $moderate;
+                            }
+                        }
+                    }
+                }
         }
         
     }

@@ -3,16 +3,25 @@ class Account::AdminController < Account::Base
 
     def show
         if current_admin
-        
-        @m=Member.order(:id)
-        
+            @m=Member.order(:id)
+            @m = @m.page(params[:page])
+            pp params[:category]
+            
+            if params[:category].to_s == '1'
+                @m=Member.order(:id)
+                @m = @m.page(params[:page])
+            elsif params[:category].to_s == '2'
+                @m=Member.order('last_name COLLATE "C" ASC')
+                @m = @m.page(params[:page])
+            elsif params[:category].to_s == '3'
+                @m=Member.order('last_name_phonetic COLLATE "C" ASC')
+                @m = @m.page(params[:page])
+            end
         else
             flash.alert="あなたは入れません"
             redirect_to :account_root 
         end
-        @m = @m.page(params[:page])
         
-
     end
 
     def edit 
@@ -84,7 +93,7 @@ class Account::AdminController < Account::Base
 
     def result
         pp "検索を始めます。"
-        @searches = Member.where('created_at >= :years_ago', :years_ago => Time.now-60.years).where("last_name ilike '%#{params[:search_text]}%'")
+        @searches = Member.where('created_at >= :years_ago', :years_ago => Time.now-60.years).where("last_name ilike '%#{params[:search_text]}%'").order(:id)
         # @searches = eval(params[:model]).where('created_at >= :years_ago', :years_ago => Time.now-60.years).where("last_name LIKE ? '%#{params[:search_text]}%'")
         pp @searches
     end
@@ -111,7 +120,7 @@ class Account::AdminController < Account::Base
     private def update_member_params
         params.require(:member).permit(
             :last_name, :last_name_phonetic, :first_name,
-            :first_name_phonetic, :deleted_at,
+            :first_name_phonetic, :deleted_at, :birth_year_month, :joining_year,
             account_attributes:[
                 :mail_address,
                 :password,

@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     get "login" => "sessions#new", as: :login
     get "show" => "sessions#show", as: :show
 
+    post "delete/:id" => "postlist#delete"
+    post "deletereply/:id" => "postlist#deletereply"
+
     post "post/:id" => "postlist#post"
     post "reply/:id" => "postlist#reply"
     
@@ -35,6 +38,7 @@ Rails.application.routes.draw do
     post "admin/new" => "admin#create"
     get "admin/:id/edit" => "admin#edit"
     patch "admin/:id" =>"admin#update"
+    post "admin/show" => "admin#show"
 
     get "admin/result" => "admin#result"
     post "admin/result" => "admin#result"

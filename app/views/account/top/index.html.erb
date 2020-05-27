@@ -53,11 +53,19 @@
                                 <%end%> 
                             <%end%>
 
+
                             <%= button_to 'いいね',"/account/post_like/"+post.id.to_s, class: "button" %>
                             <%# <%if post.like!=nil then%>
                                 <%# <span class="ss"><%= react_component("Content", { value: post.like }, prerender: true) %>
                                 <%# </span> %>
-                            <%# <%end%> 
+
+                            <%# <%end%>
+                            <%if @current_member.id==post.member_id then%>
+                                <%= form_with model: Post.new, url: "/account/delete/"+post.id.to_s do |f| %>
+                                <%= f.submit "削除",class: "button" %>
+                                <%end%> 
+                            <%end%>
+
                         </div>
                     </div>
                 </div>
