@@ -1,22 +1,22 @@
-<% @title = "LOGIN" %>
-<h1><%= @title %></h1>
+<% @title = "MEMBER LOGIN" %>
 
 <div id="login-form">
+    <h1><%= @title %></h1>
+
+    <%= content_tag(:span, flash.notice, class: "notice") if flash.notice%>
     <%= form_with model: @form, url: :account_session do |f| %>
         <div>
-            <%= f.label :mail_address, "ID" %>
+            <%= f.label :mail_address, "ログインid" %>
             <%= f.text_field :mail_address %>
         </div>
         <div>
-            <%= f.label :password, "Password" %>
+            <%= f.label :password, "パスワード" %>
             <%= f.password_field :password %>
         </div>
         <div>
             <%= f.submit "ログイン" %>
         </div>
     <% end %>
-    <div>
-        <h6>パスワードを忘れた方：<%= link_to "パスワード変更", "certification" %></h5>
-    </div>
 
 </div>
+

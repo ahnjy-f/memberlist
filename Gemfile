@@ -36,7 +36,6 @@ gem 'kaminari'
 gem 'date_validator'
 gem 'valid_email2'
 gem 'nokogiri'
-gem 'carrierwave'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
