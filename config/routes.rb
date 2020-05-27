@@ -4,11 +4,9 @@ Rails.application.routes.draw do
     root "top#index"
     get "login" => "sessions#new", as: :login
     get "show" => "sessions#show", as: :show
-<<<<<<< Updated upstream
-=======
+
     post "delete/:id" => "postlist#delete"
     post "deletereply/:id" => "postlist#deletereply"
->>>>>>> Stashed changes
     post "post/:id" => "postlist#post"
     post "reply/:id" => "postlist#reply"
     post "post_like/:id" => "postlist#post_like"
