@@ -23,7 +23,7 @@ div.table-wrapper{
         margin: $moderate auto 0;
         border: 0;
         tr:nth-child(5){
-            border-bottom: 2px solid $dark_gray;
+            border-top: 2px solid $dark_gray;
         }
         tr.none:nth-child(5){border-bottom: none;}
         tr{
