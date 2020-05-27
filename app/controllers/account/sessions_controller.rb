@@ -46,8 +46,10 @@ class Account::SessionsController < Account::Base
     end
 
     def show
-        
-        @members=Member.where(posts:!nil).order(created_at: :desc);
+        # @members=Member.order(created_at: :desc);
+        # @members=Member.where(posts:!nil).order(created_at: :desc);
+        # pp @members=Member.joins(:posts).preload(:posts).where("posts IS NOT NULL").distinct.order(created_at: :desc);
+        @members=Member.includes(:posts).references(:posts).order(created_at: :desc);
         @p=Post.order(created_at: :desc);
         @m=current_account;
         @current_account=current_account;
