@@ -47,7 +47,7 @@
             <%= f.label :birth_year_month, "誕生年月", class: "required" %>
         </th>
         <td>
-            <%= f.number_field :birth_year_month, :placeholder => "YYYYMMDD", required: true %>
+            <%= f.number_field :birth_year_month, :placeholder => "YYYYMMDD", min:18000101, required: true %>
         </td>
     </tr>
     <tr>
@@ -55,7 +55,7 @@
             <%= f.label :joining_year, "入社日", class: "required" %>
         </th>
         <td>
-            <%= f.number_field :joining_year, :placeholder => "YYYYMMDD", required: true %>
+            <%= f.number_field :joining_year, :placeholder => "YYYYMMDD", min:18000101, required: true %>
         </td>
     </tr>
     <%= f.fields_for :account do |a| %>
