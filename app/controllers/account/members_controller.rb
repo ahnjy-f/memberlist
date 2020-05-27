@@ -4,7 +4,7 @@ class Account::MembersController < Account::Base
         @current_account = current_account
         @current_member = current_member
         @member = Member.order(updated_at: "DESC")
-        @member = @member.page(params[:page])  
+        @member = @member.page(params[:page])
     end
     
     def detail
@@ -55,6 +55,10 @@ class Account::MembersController < Account::Base
         else
             render action: "edit"
         end
+    end
+
+    def result
+        @search = Member.where("last_name ilike '%#{params[:name]}%'")
     end
 
     private def member_params

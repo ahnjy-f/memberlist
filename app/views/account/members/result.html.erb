@@ -1,9 +1,9 @@
-<% @title = "Member List" %>
+<% @title = "検索内容" %>
 <h1><%= @title %></h1>
 
 <div class="container">
     <div class="row">
-        <% @member.each do |m| %>
+        <% @search.each do |m| %>
             <div class="col-3">
                 <div class="icon">
                     <%= react_component("Picture", { member: m }, prerender: true) %>
@@ -13,5 +13,5 @@
         <% end %>
     </div>
     <%= react_component("Search", { member: @member }, prerender: true) %>
-    <%= paginate @member %>
+    <%= link_to "back", "/account/members/index" %>
 </div>
