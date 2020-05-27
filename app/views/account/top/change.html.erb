@@ -1,0 +1,29 @@
+<% @title = "パスワード変更" %>
+<h1><%= @title %></h1>
+
+<div id="login-form">
+    <%= form_with model: @search_account, url: "/account/change/"+@search_account.id.to_s do |f| %>
+        <% if f.object.new_record? %>
+            <div>
+                <%= f.label :mail_address, "メールアドレス", class: "required" %>
+                <%= f.text_field :mail_address, size:30, required: true %>
+            </div>
+            <div>
+                <%= f.label :admin_flag, "adminの権限", class: "required" %>
+                <%= f.check_box :admin_flag, required: true %>
+            <div>
+            
+        <% end %>
+        
+        <div>
+            <%= f.label :password, "パスワード", class: "required" %>
+            <%= f.password_field :password, class: "none", size:25, required: true%>
+        </div>
+
+        <div class="buttons">
+            <%= f.submit "更新" %>
+            <%= link_to "キャンセル", :account_login %>
+        </div>
+
+    <% end %>
+</div>
