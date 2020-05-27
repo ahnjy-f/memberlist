@@ -18,22 +18,21 @@
             </div>
         </div>
 
-    <%@members.each do |m|%>
-        <%m.posts.each do |post|%>    
+        <%@post.each do |post|%>    
             <div class="p0">
             <hr />
                 <div class="row m0">
                     <div class="col-md-2 pt-2">
-                        <%= react_component("GetImage", { value: m.face_photo_path.url }, prerender: true) %>
+                        <%= react_component("GetImage", { value: post.member.face_photo_path.url }, prerender: true) %>
                     </div>
 
 
                     <div class="col-md-10 text-left pt-2">
                         <span class="s"><ruby>
-                                  <%=m.last_name%><rt><%=m.last_name_phonetic%></rt>
-                            &nbsp;<%=m.first_name%><rt><%=m.first_name_phonetic%></rt>
+                                  <%=post.member.last_name%><rt><%=post.member.last_name_phonetic%></rt>
+                            &nbsp;<%=post.member.first_name%><rt><%=post.member.first_name_phonetic%></rt>
                         </ruby></span>
-                        <span class="ss"> @<%=m.one_word_comment%></span> 
+                        <span class="ss"> @<%=post.member.one_word_comment%></span> 
                         <span class="ss orange"> <%=post.created_at%></span> 
                         
                         <p class="mt-2 mb-2">
@@ -107,6 +106,5 @@
             <%end%>
             
         <%end%>
-    <%end%>
     </div>
 </div>
