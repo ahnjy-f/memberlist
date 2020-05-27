@@ -15,6 +15,7 @@ div.table-wrapper{
     }
 
     table{
+        width: 100%;
         margin: $moderate auto 0;
         border: 0;
         tr:nth-child(5){
@@ -32,9 +33,21 @@ div.table-wrapper{
                 text-align: center;
                 color: $dark_gray;
             }
+            td{
+                img{
+                    width: 100px;
+                    height: 100px;
+                }
+            }
         }
     }
-
+    table.detail{
+        tr{
+            width:100%;
+            th, td{width: 50%;}
+        }
+        
+    }
     table.listing{
         width: 100%;
         tr:nth-child(even){ background-color: $very_light_gray; }
