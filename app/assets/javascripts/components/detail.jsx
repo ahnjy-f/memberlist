@@ -28,17 +28,14 @@ var Detail = React.createClass({
             </td>
           </tr>
           <tr>
-            <td colSpan={2}>ふりがな(性) ふりがな(名)</td>
-          </tr>
-          <tr>
             <td colSpan={2}>
                 {this.props.member.last_name}{this.props.member.first_name}
             </td>
         </tr>
         <tr>
             <td colSpan={2}>   
-                {year}{month}{day}入社、
-                {year2}{month2}{day2}生まれ、{this.props.member.birthplace}出身
+                {year}{month}{day}に入社、
+                {year2}{month2}{day2}生まれです！
             </td>
         </tr>
         <tr>
