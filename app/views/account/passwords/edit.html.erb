@@ -1,27 +1,27 @@
 <% @title = "パスワード変更" %>
 <h1><%= @title %></h1>
 
-<div id="generic-form">
+<div id="login-form">
     <%= form_with model: @change_password_form, url: :account_passwords_edit, method: :patch do |f| %>
         <%= content_tag(:span, flash.alert, class: "alert") if flash.alert%>
         <div>
             <%= f.label :current_password, "現在のパスワード" %>
-            <%= f.password_field :current_password, size: 32, 
+            <%= f.password_field :current_password,
                 placeholder: "現在のパスワード", required: true %>
         </div>
         <div>
             <%= f.label :new_password, "新しいパスワード" %>
-            <%= f.password_field :new_password, size: 32, 
+            <%= f.password_field :new_password,
                 placeholder: "新しいパスワード",　required: true %>
         </div>
         <div>
             <%= f.label :new_password_confirmation, "パスワード確認" %>
-            <%= f.password_field :new_password_confirmation, size: 32, 
+            <%= f.password_field :new_password_confirmation,
                 placeholder: "確認ようにもう一度パスワードを入力", required: true %>
         </div>
         <div class="buttons">
             <%= f.submit "更新" %>
-            <%= f.submit "キャンセル" %>
+            <%= link_to "キャンセル", "/account" %>
         </div>
     <% end %>
 </div>

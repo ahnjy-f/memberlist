@@ -5,9 +5,10 @@
     <div class="row">
         <% @member.each do |m| %>
             <div class="col-3">
-                <div><%= link_to(image_tag(m.face_photo_path+".jpg", class:"icon rounded-circle", width:"100px",height:"100px"), m.id.to_s+"/detail") %></div>
-                <%= m.last_name %> <%= m.first_name %>
-                <p><%= m.one_word_comment %></p>
+                <div class="icon">
+                    <%= react_component("Picture", { member: m }, prerender: true) %>
+                </div>
+                <%= react_component("Info", { member: m }, prerender: true) %>
             </div>
         <% end %>
     </div>

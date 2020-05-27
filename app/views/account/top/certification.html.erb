@@ -1,0 +1,17 @@
+<% @title = "本人認証" %>
+<h1><%= @title %></h1>
+
+<div id="login-form">
+    <%= content_tag(:span, flash.notice, class: "notice") if flash.notice%>
+    <%= form_with model: @account, url: "/account/change" do |f| %>
+        <div>
+            <%= f.label :mail_address, "ID" %>
+            <%= f.text_field :mail_address %>
+            <%= f.label :birth_year_month, "生年月日" %>
+            <%= f.text_field :birth_year_month %>
+        </div>
+        <div>
+            <%= f.submit "本人認証" %>
+        </div>
+    <% end %>
+</div>

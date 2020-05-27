@@ -2,80 +2,9 @@
 <h1><%= @title %></h1>
 
 <div class="table-wrapper">
-
-    <table class="attributes">
-        <tr>
-            <td colspan="2"><img src="/assets/<%= @member.face_photo_path %>.jpg" class="icon rounded-circle"></td>
-        </tr>
-        <tr>
-            <td colspan="2">ふりがな(性) ふりがな(名)</td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <%= @member.last_name %>
-                <%= @member.first_name %>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <%= (Time.parse(@member.joining_year.to_s)).strftime("%Y年%m月%d日") %>、
-                <%= (Time.parse(@member.birth_year_month.to_s)).strftime("%Y年%m月") %>生まれ<%= @member.birthplace %>出身
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <%= @member.one_word_comment %>
-            </td>
-        </tr>
-     
-        <tr>
-            <th>性格</th>
-            <th>趣味</th>
-        </tr>
-        <tr>
-            <td><%= @member.personality %></td>
-            <td><%= @member.hobby %></td>
-        </tr>
-        <tr>
-            <th>好きなもの</th>
-            <th>嫌いなもの</th>
-        </tr>
-        <tr>
-            <td><%= @member.favorite_things %></td>
-            <td><%= @member.hate_things %></td>
-        </tr>
-        <tr>
-            <th>長所</th>
-            <th>短所</th>
-        </tr>
-        <tr>
-            <td><%= @member.strong_point %></td>
-            <td><%= @member.week_point %></td>
-        </tr>
-        <tr>
-            <th>得意なこと</th>
-            <th>苦手なこと</th>
-        </tr>
-        <tr>
-            <td><%= @member.special_skill %></td>
-            <td><%= @member.week_point %></td>
-        </tr>
-        <tr>
-            <th>されて嬉しいこと</th>
-            <th>されたら嫌いなこと</th>
-        </tr>
-        <tr>
-            <td><%= @member.happy_done_things %></td>
-            <td><%= @member.disgusted_things %></td>
-        </tr>
-        <tr>
-            <th colspan="2">自由記入</th>
-        </tr>
-        <tr>
-            <td colspan="2"><%= @member.freedom_message %></td>
-        </tr>
-    </table>
-
+    <% if @member %>
+        <%= react_component("Detail", {member:@member}, prerender: true) %>
+    <% end %>
     <div class="links">
         <%= link_to "閉じる", request.referer.present? ? request.referer : default_path %>
     </div>

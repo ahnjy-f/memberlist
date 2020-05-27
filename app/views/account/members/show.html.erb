@@ -1,11 +1,13 @@
-<% @title = "フロフィールのページ" %>
+<% @title = "プロフィール" %>
 <h1><%= @title %></h1>
 
 <div class="table-wrapper">
 
     <table class="attributes">
         <tr>
-            <td colspan="2"><img src="/assets/<%= @member.face_photo_path %>.jpg" class="icon rounded-circle"></td>
+            <td colspan="2">
+                <%= image_tag @member.face_photo_path.url, class:"icon rounded-circle" %>
+            </td>
         </tr>
         <tr>
             <td colspan="2">ふりがな(性) ふりがな(名)</td>
@@ -18,8 +20,8 @@
         </tr>
         <tr>
             <td colspan="2">
-                <%= (Time.parse(@member.joining_year.to_s)).strftime("%Y年%m月%d日") %>、
-                <%= (Time.parse(@member.birth_year_month.to_s)).strftime("%Y年%m月") %>生まれ<%= @member.birthplace %>出身
+                <%= (Time.parse(@member.joining_year.to_s)).strftime("%Y年%m月%d日") %>入社、
+                <%= (Time.parse(@member.birth_year_month.to_s)).strftime("%Y年%m月") %>生まれ、<%= @member.birthplace %>出身
             </td>
         </tr>
         <tr>
@@ -57,7 +59,7 @@
         </tr>
         <tr>
             <td><%= @member.special_skill %></td>
-            <td><%= @member.week_point %></td>
+            <td><%= @member.week_things %></td>
         </tr>
         <tr>
             <th>されて嬉しいこと</th>
