@@ -5,7 +5,7 @@ Member.create!(
     last_name_phonetic: "かんりしゃ",
     first_name: "管理者",
     first_name_phonetic: "かんりしゃ",
-    face_photo_path: open("#{Rails.root}/app/assets/images/1.jpg"),
+    face_photo_path: "1",
 
     created_at: DateTime.now,
     updated_at: DateTime.now,
@@ -66,7 +66,7 @@ first_names = %w{
         last_name_phonetic: ln[1],
         first_name: fn[0],
         first_name_phonetic: fn[1],
-        face_photo_path: open("#{Rails.root}/app/assets/images/2.jpg"),
+        face_photo_path: "2",
 
         created_at: DateTime.now,
         updated_at: DateTime.now,

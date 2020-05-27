@@ -1,9 +1,9 @@
 require "pp"
 class Account::SessionsController < Account::Base
     def new
-
         if current_account
             pp "indexに行きます"
+            
             redirect_to :account_root
         else
             @form = Account::LoginForm.new
@@ -12,8 +12,8 @@ class Account::SessionsController < Account::Base
     end
 
     def create
-
         @form = Account::LoginForm.new(params[:account_login_form])
+
         if @form.mail_address.present?
             account_info =
                 Account.find_by("LOWER(mail_address) = ? ", @form.mail_address.downcase)    
@@ -29,7 +29,6 @@ class Account::SessionsController < Account::Base
             pp session[:account_admin_flag]
             pp "============="
             flash.notice = "ログイン完了"
-            pp current_admin
             redirect_to :account_root
         else
             flash.alert = "メールアドレスか　パスワードが　正しくないです"
@@ -45,18 +44,7 @@ class Account::SessionsController < Account::Base
         redirect_to :account_root
     end
 
-    def show
-        # @members=Member.order(created_at: :desc);
-        # @members=Member.where(posts:!nil).order(created_at: :desc);
-        # pp @members=Member.joins(:posts).preload(:posts).where("posts IS NOT NULL").distinct.order(created_at: :desc);
-        @members=Member.includes(:posts).references(:posts).order(created_at: :desc);
-        @p=Post.order(created_at: :desc);
-        @m=current_account;
-        @current_account=current_account;
-        @current_admin=current_admin;
-        
-
-        render action: "../top/index";
+    def edit
     end
 
 end
