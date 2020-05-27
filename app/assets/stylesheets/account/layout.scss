@@ -28,6 +28,7 @@ div#container_div {
   }
   
 header{
+    
     width: 100%;
     height: $very_wide*3.5;
     background-color: $white;
@@ -42,7 +43,7 @@ header{
         left: 5px;
     }
     h1{
-        width: 250px;
+        font-family: 'M PLUS Rounded 1c', sans-serif;
         margin-bottom: 0;
         font-size: $huge;
         line-height: 1.5;
@@ -56,21 +57,31 @@ header{
         right: 15%;
         a{
             text-decoration: none;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            float: right;
+            margin-left: 30px;
+        }
+        .line{
+            color: $dark-gray;
+            border-bottom: 1px solid $orange;
         }
     }
+    a{
+        text-decoration: none;
+        transition    : .3s;         /* なめらか変化 */
+        }
+        a:hover {
+            opacity       : 0.5;           /* カーソル時透明度 */
+        }
     li{
         display: inline-block;
         padding-right: $very-wide;
     }
     p{
         text-align: center;
-        
+        margin: 0;
     }
-    a{
-        float: right;
-        color: $dark-gray;
-        border-bottom: 1px solid $orange;
-    }
+    
     .icon{
         width: 40px;
         height: 40px;
