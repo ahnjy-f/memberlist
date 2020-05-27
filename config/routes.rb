@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     post "admin/new" => "admin#create"
     get "admin/:id/edit" => "admin#edit"
     patch "admin/:id" =>"admin#update"
+    post "admin/show" =>"admin#show"
 
     get "admin/result" => "admin#result"
     post "admin/result" => "admin#result"
