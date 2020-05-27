@@ -6,7 +6,7 @@
         <%= react_component("Detail", {member:@member}, prerender: true) %>
     <% end %>
     <div class="links">
-        <%= link_to "閉じる", request.referer.present? ? request.referer : default_path %>
+        <%= link_to "戻る", request.referer.present? ? request.referer : default_path %>
     </div>
 
 </div>
