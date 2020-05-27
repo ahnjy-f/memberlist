@@ -107,6 +107,19 @@ class Account::PostlistController < Account::Base
         end 
     end
     
+    def delete
+        Post.find(params[:id]).replies.delete_all
+        pp Post.find(params[:id]).like.nil?
+        if !Like.find_by(post_id:params[:id]).nil?
+            Like.find_by(post_id:params[:id]).delete
+        end
+        Post.find(params[:id]).delete
+    end
+    def deletereply
+        Reply.find(params[:id]).delete;
+    end
+
+
     private def post_params
         params.require(:post).permit(
             :post
