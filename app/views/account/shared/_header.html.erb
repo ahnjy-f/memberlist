@@ -1,53 +1,53 @@
+<% @title = "マルマル" %>
 <header>
     <div class="square"></div>
-
-    <% @title = "MemberList" %>
-    <h1><a href="/account/show"><%= @title %></a></h1>
 
     <%= content_tag(:span, flash.notice, class: "notice") if flash.notice %>
     <%= content_tag(:span, flash.alert, class: "alert") if flash.alert %>
 
-    <%
-    if @current_member 
-        full_name = @current_member.last_name + @current_member.first_name
-        @title = "#{full_name}"
+    <%if @current_member 
+        full_name = @current_member.last_name + "  " + @current_member.first_name
+        @name = "#{full_name}"
     elsif @current_admin
-        full_name = @current_member.last_name + @current_member.first_name
-        @title = "#{full_name}"
+        full_name = @current_member.last_name + "  " + @current_member.first_name
+        @name = "#{full_name}"
     end%>
 
     <% if current_account %>
+    <%# ログインしている時のロゴタイトルの表示 %>
+    <h1><a href="/account/show"><%= @title %></a></h1>
+
     <div class="menu">
-            <a href="/account" class="hover">
-                <div id="a">
-                    <p class="line">ポスト</p>
-                    <p>Post</p>
-                </div>
-            </a>
-            <a href="/account/members/show" class="hover">
-                <div id="b">
-                    <p class="line">プロフィール</p>
-                    <p>Profile</p>
-                </div>
-            </a>
-            <a href="/account/members/index" class="hover">
-                <div id="c">
-                    <p class="line">メンバー一覧</p>
-                    <p>MemberList</p>
-                </div>
-            </a>   
+        <a href="/account" class="hover">
+            <div id="a">
+                <p class="line">ポスト</p>
+                <p>Post</p>
+            </div>
+        </a>
+        <a href="/account/members/show" class="hover">
+            <div id="b">
+                <p class="line">プロフィール</p>
+                <p>Profile</p>
+            </div>
+        </a>
+        <a href="/account/members/index" class="hover">
+            <div id="c">
+                <p class="line">メンバー一覧</p>
+                <p>MemberList</p>
+            </div>
+        </a>   
     </div>
 
-        <div class="right">
-            <%= image_tag @current_member.face_photo_path.url, class:"icon rounded-circle" %>
-            <%= @title %>
-        </div>
+    <div class="right">
+        <%= image_tag @current_member.face_photo_path.url, class:"icon rounded-circle" %>
+        <a href="/account/members/show" class="hover"><%= @name %></a>
+    </div>
         
     <% else %>
-
+        <%# ログインしていない時のロゴタイトルの表示 %>
+        <h1><%= link_to @title, :account_login %></h1>
          <div class="right">
-            <%= link_to "ログイン", :account_login %>
-            
+            <%= link_to "ログイン", :account_login %>            
         </div>
     <% end %>
 </header>
@@ -55,17 +55,19 @@
 <% if current_account %>
 <header class="header2">
     <div class="right">
+        <ul>
     <%if current_account.admin_flag=="1" %>
-        <li>
-            <a href="/account/admin/show">従業員管理</a>
-        </li>
+            <li>
+                <a href="/account/admin/show">従業員管理</a>
+            </li>
     <% end %>
-        <li>
-            <a href="/account/passwords/edit">パスワード変更</a>  
-        </li>
-        <li>
-            <%= button_to "ログアウト", :account_session, method: :delete %> 
-        </li>
+            <li>
+                <a href="/account/passwords/edit">パスワード変更</a>  
+            </li>
+            <li>
+                <%= button_to "ログアウト", :account_session, method: :delete %> 
+            </li>
+        </ul>
     </div>
 </header>
 <% end %>
