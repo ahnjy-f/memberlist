@@ -122,7 +122,8 @@ class Account::PostlistController < Account::Base
         redirect_to:account_root;
     end
     def deletereply
-        Reply.find(params[:id]).delete;
+        
+        Reply.find(params[:id]).destroy;
         redirect_to:account_root;
     end
 
