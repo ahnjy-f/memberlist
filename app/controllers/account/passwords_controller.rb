@@ -21,7 +21,7 @@ class Account::PasswordsController < Account::Base
             flash.notice = "変更されました"
             redirect_to :account_root
         else
-            flash.alert = "PassWord 変更失敗"
+            flash.alert = "パスワード変更失敗"
             render action: "edit"
         end
     end
