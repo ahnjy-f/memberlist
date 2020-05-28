@@ -4,7 +4,7 @@ class Account::PostlistController < Account::Base
 
         @current_account = current_account
         @current_member = current_member
-        @member = Member.all
+        @member = Member.includes(:posts).where(posts:{member_id:current_member.id})
         @post = Post.order(created_at: :ASC)
         @post_all=Post.order(created_at: :desc)
         @reply = Reply.order(created_at: :ASC)
