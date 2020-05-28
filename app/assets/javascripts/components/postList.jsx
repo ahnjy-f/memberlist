@@ -6,18 +6,15 @@ var PostList = React.createClass({
         let post = this.props.post
         let reply = this.props.reply
         let n = this.props.post.length
+        let m = this.props.reply.length
         let data
         let hit = []
     
     console.log("this.props- - - - - - - - -postlist!!")
     console.log(this.props)
-    console.log(post[0].member_id)
 
     for(let i= 0; i < n; i++){
-        console.log(i + ":::i   cmember.id:"+cmember.id+"== "+ post[i].member_id +":::id  n::"+n)
-        if(post[i].member_id==cmember.id){
-            console.log(i +" ★hit! post[i].member_id[" + post[i].member_id +"] == "+ cmember.id +":cmember.id  length" + n)
-            
+        if(post[i].member_id==cmember.id){ 
             hit.unshift({
                 post_id: post[i].id,
                 created_at: post[i].created_at
@@ -26,10 +23,8 @@ var PostList = React.createClass({
             console.log(hit)
         }
     }
-    for(let i= 0; i < n; i++){
-        console.log(i + ":::i   cmember.id:"+cmember.id+"== "+ reply[i].member_id +":::reply[i]member_id  n::"+n)
+    for(let i= 0; i < m; i++){
         if(reply[i].member_id==cmember.id){
-            console.log(i +" ★hit! reply[i].member_id[" + reply[i].member_id +"] == "+ cmember.id +":cmember.id  length" + n)
             
             hit.unshift({
                 reply_id: reply[i].id,
@@ -44,14 +39,6 @@ var PostList = React.createClass({
     if (a.created_at > b.created_at) return -1;
     return 0;
     });
-
-    console.log("postlist hitのなかみ！！！")
-            console.log(hit)
-            console.log(hit[0])
-            console.log(hit[1])
-            console.log(hit[2])
-            console.log(hit[3])
-
     //配列hitをdataへmapする
     let num =0 
     data = hit.map((value)=>(
@@ -59,7 +46,11 @@ var PostList = React.createClass({
         <PostItem data={hit[num]} index={num++} post={post} reply={reply} member={member}/>
      ))
     //★問題 data={hit[0]}→data={hit[num]}にしたい
-    
+    if(hit.length==0){
+        return (
+            <div>Post履歴がありません</div>
+        )  
+    }
         return (
         <div>
             {/* <PostItem data={hit[2]} index={num++} post={post} reply={reply} member={member}/> */}
