@@ -25,7 +25,7 @@ div.table-wrapper{
         tr:nth-child(5){
             border-top: 2px solid $dark_gray;
         }
-        tr.none:nth-child(5){border-bottom: none;}
+        tr.none:nth-child(5){border-top: none;}
         tr{
             th{
                 background-color: none;
