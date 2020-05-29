@@ -4,9 +4,7 @@ var RailsPost = React.createClass({
     console.log(this.props.value)
     return (
       <div>
-        reactです
           {this.props.value}
-        reactです
       </div>
     );
   }

@@ -26,6 +26,7 @@ div#container{
 div#container_div{
     flex: 1;
   }
+
 header{
     width: 100%;
     height: $very_wide*3.5;
@@ -35,14 +36,40 @@ header{
     a{
         text-decoration: none !important;
         color: $dark-gray;
-    }
-    div.square{
+        position: relative;
+        display: inline-block;
+      }
+      .hover{
+        a::after {
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            content: '';
+            width: 100%;
+            height: 1px;
+            background: $orange;
+            transform: scale(0, 1);
+            transform-origin: center top;
+            transition: transform .3s;
+        }
+        a:hover::after {
+            transform: scale(1, 1);
+      }}
+    h1::before{
         height: 15px;
         width: 15px;
         background-color: $orange;
+        content: "<i class="fas fa-glasses"></i>";
+    }
+    .fas{
+        font-size: 2em;
+    }
+    .square{
+        display: inline;
+        top: 2em;
+        left: 12em;
+        font-size: 0.5em;
         position: absolute;
-        top: 35%;
-        left: 5px;
     }
     h1{
         font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -51,13 +78,17 @@ header{
         line-height: 1.5;
         position: absolute;
         top: 25%;
-        left: 25px;
+        left: 40px;
+    }
+    h1 span{
+        font-size: 1em;
     }
     div.menu{
         position: absolute;
-        top: 25%;
+        top: 15%;
         right: 15%;
-        display: flex; flex-direction: row;
+        display: flex;
+        flex-direction: row;
         a{
             text-decoration: none;
             font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -68,18 +99,18 @@ header{
             div#b{ order: 2; }
             div#c{ order: 3; }
         }
+        a.hover{
+            text-decoration: none;
+            transition: .3s; /* なめらか変化 */
+            }
+            a.hover:hover {
+                opacity: 0.5; /* カーソル時透明度 */
+            }
         .line{
             color: $dark-gray;
             border-bottom: 1px solid $orange;
         }
     }
-    a.hover{
-        text-decoration: none;
-        transition: .3s; /* なめらか変化 */
-        }
-        a.hover:hover {
-            opacity: 0.5; /* カーソル時透明度 */
-        }
     li{
         display: inline-block;
         padding-right: $very-wide;
@@ -103,6 +134,22 @@ header{
     }
 }
 .header2{
+    text-align: end;
+    ul{
+        padding: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+    li{
+        display: inline-block;
+        padding-right: $very-wide;
+        a{
+            color: white;
+            text-decoration: none;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+        }
+    }
     height:$very_wide*2.5;
     background-color: $orange;
     .right{
@@ -110,41 +157,27 @@ header{
         position: absolute;
         top: 8%;
         right: 0;
-    li:first-child{
+    }
+    .Rline{
+        padding-right: 1.5em;
         border-right: 1px solid $white;
     }
-    li:nth-child(2){
-        padding-left: $wide;
-        padding-right: 10px;
-    }
-    li:last-child{
-        position: relative;
-        top: -1px;
-        right: 10px;
-        padding-right: 0;
        form.button_to{
             text-align: center;
             
             input[type='submit']{
-                width: 100px;
-                padding: $wide $wide * 2;
+                font-family: 'M PLUS Rounded 1c', sans-serif;
+                width: 100%;
                 background-color: $orange;
                 border: none;
                 color: $white;
             }
         }
     }
-}
-    li{
-        a{
-            color: $white;
-            text-decoration: none;
-        }
-    }
-}
+
 footer{
     width: 100%;
-    height: $very-wide;
+    height: $very_wide;
     background-color: $gray;
     color: $very_light_gray;
     p{

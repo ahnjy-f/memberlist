@@ -1,4 +1,4 @@
-var PostItem = React.createClass({
+var LikeItem = React.createClass({
   
     render(){
 
@@ -92,7 +92,6 @@ var PostItem = React.createClass({
         };
         
       return (
-          
         <div style={div}>
             <table>
                 <tr>
@@ -108,27 +107,12 @@ var PostItem = React.createClass({
                                 [{idname}]&nbsp;&nbsp;
                                 <GetDate date={data.created_at} />&nbsp;&nbsp;
                             </span> 
-                            <span style={fontSizeS}>[like:{hit[0].data.like}]</span>
+                            <LikeButton url={hit[0].likeurl} data={hit[0].data.like} />
                         </div>
                     </td>
                 </tr>
             </table>
         </div>
-
-        // <div style={div}>
-        //     <GetMemberDate member={this.props.member} memberid={hit[0].data.member_id}/>
-        //     <div style={fontSizeS}>
-        //         {data.created_at}
-        //     </div>
-        //     <hr/>
-        //     <div style={content}>
-        //         {hit[0].content}
-        //     </div>
-        //     <div style={right}>
-        //         <span style={fontSizeS}>{idname}</span>
-        //         <span style={fontSizeS}>like:{hit[0].data.like}</span>
-        //     </div>
-        // </div>
       );
     }
   });

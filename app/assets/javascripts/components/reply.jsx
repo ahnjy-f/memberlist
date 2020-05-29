@@ -1,7 +1,4 @@
 var Reply = React.createClass({
-  // propTypes: {
-  //   greeting: React.PropTypes.string
-  // },
 
   render: function() {
   let n = this.props.index
