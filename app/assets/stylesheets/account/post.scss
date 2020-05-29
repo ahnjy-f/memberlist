@@ -7,7 +7,9 @@ div.p-0{
 div.m-0{
     margin: 0;
 }
-
+hr.hr-l{
+    border: 1px solid rgba(0,0,0,.1);
+}
 .b{
     font-weight: bolder;
 }
@@ -42,28 +44,6 @@ div.m-0{
 .inline{
     display: inline;
 }
-
-a {
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-  }
-  a::after {
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    content: '';
-    width: 100%;
-    height: 1px;
-    background: $orange;
-    transform: scale(0, 1);
-    transform-origin: center top;
-    transition: transform .3s;
-  }
-  a:hover::after {
-    transform: scale(1, 1);
-  }
-
 
 .button{
     padding-left: 1.5rem;

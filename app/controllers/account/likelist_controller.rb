@@ -2,7 +2,7 @@ class Account::LikelistController < Account::Base
     def index
         @current_account = current_account
         @current_member = current_member
-        @member = Member.includes(:posts).where(posts:{member_id:current_member.id})
+        @member = Member.all
         @post = Post.order(created_at: :ASC)
         @reply = Reply.order(created_at: :ASC)
         @postlike = Like.order(created_at: :ASC)

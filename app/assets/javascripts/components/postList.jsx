@@ -45,7 +45,8 @@ var PostList = React.createClass({
         console.log("★- - - ★hit[num]" + num),
         <PostItem data={hit[num]} index={num++} post={post} reply={reply} member={member}/>
      ))
-    //★問題 data={hit[0]}→data={hit[num]}にしたい
+    
+
     if(hit.length==0){
         return (
             <div>Post履歴がありません</div>
@@ -53,7 +54,6 @@ var PostList = React.createClass({
     }
         return (
         <div>
-            {/* <PostItem data={hit[2]} index={num++} post={post} reply={reply} member={member}/> */}
             {data}
         </div>
         );

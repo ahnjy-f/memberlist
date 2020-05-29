@@ -10,7 +10,6 @@ var LikeList = React.createClass({
     let p = plike.length
     let r = rlike.length
 
-
     let data
     let hit =[]
 
@@ -28,7 +27,6 @@ var LikeList = React.createClass({
     }
     
     //current_memberの　replylikeとcreated_atを　配列hitへいれる
-
     for(let j=0; j < r; j++){
       if(rlike[j].member_id == cmember.id&& rlike[j].like==true){ 
         hit.unshift({
@@ -39,7 +37,6 @@ var LikeList = React.createClass({
         console.log(hit)
       }
     }
-  
 
     if(hit.length!=0){
     hit.sort((a, b) => {
@@ -48,7 +45,6 @@ var LikeList = React.createClass({
       return 0;
     });
     
-    
     //配列hitをdataへmapする
     let num =0
     console.log("入りました．");
@@ -56,7 +52,7 @@ var LikeList = React.createClass({
     
     data = hit.map((value)=>(
       console.log(hit[num]),
-      <PostItem data={hit[num]} index={num++} post={this.props.post} reply={this.props.reply} member={this.props.member}/>
+      <LikeItem data={hit[num]} index={num++} post={this.props.post} reply={this.props.reply} member={this.props.member}/>
     ))
 
       return (

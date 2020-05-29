@@ -15,7 +15,7 @@ class Menu extends React.Component {
               <hr/>
               <div><a href="/account/postlist">投稿一覧</a></div>
               <hr/>
-              <div><a href="/account/likelist">お気に入り一覧</a></div>
+              <div><a href="/account/likelist">いいね一覧</a></div>
           </div>
         );
       }

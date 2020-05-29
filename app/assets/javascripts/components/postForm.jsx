@@ -1,7 +1,4 @@
 var PostForm = React.createClass({
-    // propTypes: {
-    //   current_member: React.PropTypes.string
-    // },
     getInitialState: function(){
       return {
           data: "state",
@@ -27,14 +24,6 @@ var PostForm = React.createClass({
                       {cmember.last_name} {cmember.first_name}  
                       </div>
                       <div>
-                        state...{this.state.data}
-                        <MessageBox cmember={this.props.value}/>
-                        {/* form */}
-                        {/* <form onSubmit={this.handleSubmit}>
-                        <textarea placeholder="Title" ref='user' minlength="1" maxlength="140" size="20" required /> */}
-                            {/* <button onClick={this.doClick}>post</button> */}
-                            {/* <input type="submit" value="Post" />
-                        </form> */}
                           <span>PostForm[text]</span>
                       </div>
                       <div>
