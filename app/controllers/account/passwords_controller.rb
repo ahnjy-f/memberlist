@@ -4,7 +4,7 @@ class Account::PasswordsController < Account::Base
         pp "一応入りました"
         pp current_account
         @change_password_form = Account::ChangePasswordForm.new(object: current_account)
-        pp "editに入りました"   
+        pp "editに入りました"
         pp "情報"
         pp @change_password_form
         pp "=========================="
@@ -21,7 +21,7 @@ class Account::PasswordsController < Account::Base
             flash.notice = "変更されました"
             redirect_to :account_root
         else
-            flash.alert = "PassWord 変更失敗"
+            flash.alert = "パスワード変更失敗"
             render action: "edit"
         end
     end

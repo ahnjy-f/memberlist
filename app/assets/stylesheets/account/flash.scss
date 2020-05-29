@@ -4,17 +4,47 @@
 header{
     span.notice, span.alert{
         display: inline-block;
-        padding: $narrow $moderate;
+        padding: $narrow $moderate*3;
         margin: 0 $wide;
         font-size: $tiny;
+        width: auto;
+        height: 30px;
+        text-align: center;
+        line-height: 25px;
+        border-radius: $very-wide;
         color: $very_light_gray;
+        position: absolute;
+        top: 25%;
+        left: 15%;
+        animation-name: fadein;
+        animation-duration: 6s;
+        animation-fill-mode: forwards;
     }
 
     span.notice{
-        background-color: $green;
+        background-color: $orange;
     }
 
     span.alert{
-        background-color: $red;
+        background-color: $orange;
+    }
+    
+    @keyframes fadein {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    80%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(-30px);
+    }
     }
 }

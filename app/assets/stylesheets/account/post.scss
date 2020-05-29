@@ -1,0 +1,87 @@
+@import "colors";
+@import "dimensions";
+
+div.p-0{
+    padding: 0;
+}
+div.m-0{
+    margin: 0;
+}
+hr.hr-l{
+    border: 1px solid rgba(0,0,0,.1);
+}
+.b{
+    font-weight: bolder;
+}
+.l{
+    font-size: large;
+}
+.s{
+    font-size: small;
+}
+.ss{
+    font-size: 0.6rem;
+}
+.orange{
+    color: $orange;
+}
+.menu{
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    a{
+    color: #666;
+    text-decoration: none !important;
+    }
+}
+
+.inline_form{
+    form{
+        display: inline;
+    }
+    .button_to{
+        display: inline;
+    }
+}
+.inline{
+    display: inline;
+}
+
+.button{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 50rem;
+    font-size: small;
+    display: inline;
+}
+.button_o{
+    padding-left: 0.8rem;
+    border-radius: 50rem;
+    font-size: small;
+    display: inline;
+}
+.button_o:hover,
+.button:hover {
+    border-color: $orange;
+    color: $orange;
+}
+.button_o::before,
+.button_o::after,
+.button::before,
+.button::after {
+  position: absolute;
+  transform: -1rem;
+  z-index: -1;
+  display: block;
+  content: '';
+}
+.button_o,
+.button_o::before,
+.button_o::after,
+.button,
+.button::before,
+.button::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}

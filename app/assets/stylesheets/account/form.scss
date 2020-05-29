@@ -4,25 +4,47 @@
 div#wrapper{
     div#container{
         div#generic-form{
-            width: 480px;
+            width: 700px;
             margin: $wide * 2 auto;
             padding: $wide * 2;
-            border-radius: $wide;
-            border: solid 4px $light_green;
-            background-color: $very_light_gray;
+            border: solid 1px $dark-gray;
+            background-color: $white;
+            display:flex;
+            justify-content: center;
 
             
             form{
+                table{
+                    width: 100%;
+                    th{
+                        width: auto;
+                    }
+                    label.required:after{
+                        content: '*';
+                        padding-left: $narrow;
+                        color: $red;
+                    }
+                }
+
                 div{
                     padding: $wide;
-                    lebel{
-                        display: block;
+                    label{
+                        text-align: left;
+                        display: inline-block;
                         padding: $moderate 0;
                     }
                     label.required:after{
                         content: '*';
                         padding-left: $narrow;
                         color: $red;
+                    }
+                    input[type='password']{
+                        border-radius: $very-wide;
+                        border: 1px solid $dark-gray;
+                    }
+                    input[type='password'].none{
+                        border-radius: 0;
+                        border: 1px solid $gray;
                     }
                 }
                 div.notes{
@@ -39,6 +61,9 @@ div#wrapper{
                     text-align: center;
                     input[type='submit']{
                         padding: $wide $wide * 2;
+                        border-radius: $wide * 2;
+                        border: 1px solid $dark-gray;
+                        color: $dark_gray;
                     }
                 }
 

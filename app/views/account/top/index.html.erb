@@ -1,13 +1,102 @@
-<% @title = "indexのページ" %>
-<h1><%= @title %></h1>
+<div class="row m-0">
+    <div class="col-md-3 pl-4 pt-3 menu">
+        <%= react_component("Menu", { cmember: @current_account }, prerender: true) %>
+    </div>
+    <div class="col-md-9 m-0">
+        <div class="row m-0">
+            <div class="col-md-2 pt-2">
+                <%= react_component("GetImage", { value: @current_member.face_photo_path.url }, prerender: true) %>
+            </div>
+            <div class="col-md-10 text-right p-3 pr-2">
+                <%= form_with model: Post.new, url:"/account/post/"+@m.id.to_s do |a| %>
+                <%= a.text_area :post , :placeholder => "今日はどんな気分ですか？" ,class: "form-control ",style:"height: 100px;", required: true %>
+                <%= a.submit "投稿" ,class: "button l mt-2 mb-2"%>
+                <%end%>
+            </div>
+        </div>
 
-<ul class="menu">
-    <%= content_tag(:span, flash.alert, class: "alert") if flash.alert%>
-    <li><%= link_to "フロフィール", "/account/members/show" %></li>
-    <li><%= link_to "パスワード変更", "/account/passwords/edit" %></li>
-    <li><%= link_to "ログアウト", :account_session, method: :delete %></li>
-    <li><%= link_to "メンーバ一覧", "/account/members/index" %></li>
-    <%if @current_member.account.admin_flag == "1"%>
-        <li><%= link_to "管理者一覧", "/account/admin/show" %></li>
-    <% end %>
-</ul>
+        <%@post.each do |post|%>    
+            <div class="p-0">
+            <hr class="hr-l"/>
+                <div class="row m-0">
+                    <div class="col-md-2 pt-2">
+                        <%= react_component("GetImage", { value: post.member.face_photo_path.url }, prerender: true) %>
+                    </div>
+                    <div class="col-md-10 text-left pt-2 row">
+                        <div class="col-sm-8">
+                            <span class="mr-2"><ruby>
+                                <%=post.member.last_name%><rt><%=post.member.last_name_phonetic%></rt>&nbsp;&nbsp;
+                                <%=post.member.first_name%><rt>&nbsp;&nbsp;<%=post.member.first_name_phonetic%></rt>
+                            </ruby></span>
+                            <span class="s orange"> @<%=post.member.one_word_comment%></span> 
+                            <span class="ss">       <%=post.created_at.strftime("%Y.%m.%d %-H:%-M")%></span> 
+                        </div>
+                        <div class="col-sm-4 text-right inline_form p-0">
+                            <%= button_to "/account/post_like/"+post.id.to_s, class: "button_o" do %>いいね <i class="far fa-thumbs-up"></i>
+                                <%if post.like!=nil then %>
+                                    <span class="badge badge-pill ss">
+                                        <%= react_component("Content", { value: post.like }, prerender: true) %>
+                                    </span> 
+                                <%end%>
+                            <% end %>
+                            <%if @current_member.id==post.member_id then%>
+                                <%= form_with model: Post.new, url: "/account/delete/"+post.id.to_s do |f| %>
+                                    <%= f.button :type => "submit", class: "button_o" do %>
+                                        削除 <i class='fas fa-trash'></i>
+                                    <% end %>
+                                    
+                                <%end%> 
+                            <%end%>
+                        </div>
+                        <div class="col-12 mt-2 mb-2 s">
+                            <%= react_component("Content", { value: post.post }, prerender: true) %>
+                        </div>
+                        <div class="col-sm-10">
+                            <%= form_with model: Reply.new, url:"/account/reply/"+post.id.to_s do |a| %>
+                                <%= a.text_field :reply, :placeholder => "コメントを残しましょう！",:size => "50",class: "form-control", required: true %>
+                        </div>
+                        <div class="col-sm-2 p-0 text-right">
+                                <%= a.submit "返信",class: "button mt-2 mb-2 l"%>   
+                            <%end%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <%post.replies.each do |reply|%>
+                <div class="row m-0 mt-3 border-top">
+                    <div class="col-md-2 pt-2">
+                        <%= react_component("GetImageR", { value: reply.member.face_photo_path.url }, prerender: true) %>
+                    </div>
+                    <div class="col-md-10 pt-2 row text-left">
+                        <div class="col-sm-8 pt-3">
+                            <span class="mr-2"><ruby>
+                                <%=reply.member.last_name%>     <rt><%=reply.member.last_name_phonetic%></rt>&nbsp;&nbsp; 
+                                <%=reply.member.first_name%>    <rt>&nbsp;&nbsp;<%=reply.member.first_name_phonetic%></rt>
+                            </ruby></span>
+                            <span class="s orange"> @<%=reply.member.one_word_comment%></span> 
+                            <span class="ss">       <%=reply.created_at.strftime("%Y.%m.%d %-H:%-M")%></span>
+                        </div>
+                        <div class="col-sm-4 p-0 pt-3 text-right inline_form">
+                            <%= button_to "/account/reply_like/"+reply.id.to_s,class: "button_o mb-2" do%>いいね <i class="far fa-thumbs-up"></i>
+                                <span class="badge badge-pill ss">
+                                    <%= react_component("Content", { value: reply.like }, prerender: true) %>
+                                </span>
+                            <%end%>
+                            <%if @current_member.id==reply.member.id then%>
+                                    <%= form_with model: Reply.new, url: "/account/deletereply/"+reply.id.to_s do |f| %>
+                                    <%= f.button :type => "submit", class: "button_o" do %>
+                                        削除 <i class='fas fa-trash'></i>
+                                    <% end %>
+                                    <%end%> 
+                            <%end%>
+                        </div>
+                        <div class="mt-2 mb-2 col-12 s">
+                            <%= react_component("Content", { value: reply.reply }, prerender: true) %>
+                        </div>
+                    </div>
+                </div>
+            <%end%>
+        <%end%>
+    </div>
+</div>

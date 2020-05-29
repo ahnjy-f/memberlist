@@ -1,0 +1,8 @@
+<div class="row m-0">
+    <div class="col-md-3 pl-4 pt-3 menu">
+        <%= react_component("Menu", { cmember: @current_account }, prerender: true) %>
+    </div>
+    <div class="col-md-9 p-0">
+        <%= react_component("PostList", { current_member: @current_member,member: @member,  post: @post, reply: @reply }, prerender: true) %>
+    </div>
+</div>

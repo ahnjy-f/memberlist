@@ -3,8 +3,7 @@ class Account::MembersController < Account::Base
     def index
         @current_account = current_account
         @current_member = current_member
-        
-        @member = Member.order(:first_name, :last_name)
+        @member = Member.order(updated_at: "DESC")
         @member = @member.page(params[:page])
     end
     
@@ -34,10 +33,14 @@ class Account::MembersController < Account::Base
         @current_member = current_member
         @account = Account.find_by(id: session[:account_id])
         @member = current_member
+        # @member.face_photo_path = params[:face_photo_path]
 
         @member.assign_attributes(member_params)
 
         if @member.save
+            if @member.face_photo_path.nil?
+                @member.face_photo_path = "default_icon.jpg"
+            end
 
             @edithistory = MemberEditHistory.new(history_params)
             @edithistory.member_id = @member.id
@@ -52,6 +55,10 @@ class Account::MembersController < Account::Base
         else
             render action: "edit"
         end
+    end
+
+    def result
+        @search = Member.where("last_name ilike '%#{params[:name]}%'")
     end
 
     private def member_params
